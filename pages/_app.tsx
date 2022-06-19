@@ -1,17 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 import '@/styles/globals.css'
-import Link from 'next/link'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useState, useEffect, useRef } from 'react'
+import { AppProps } from 'next/app'
 import SideBar from '@/components/Layout/SideBar/SideBar'
-import TopBar from '@/components/Layout/Header/Header'
+import Header from '@/components/Layout/Header/Header'
 import RightSection from '@/components/Layout/RightSection/RightSection'
 import Footer from '@/components/Layout/Footer/Footer'
 
-function MyApp({ Component, pageProps }) {
-    const router = useRouter()
-
+function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
@@ -21,17 +16,23 @@ function MyApp({ Component, pageProps }) {
                 />
                 <title>onivue-...</title>
             </Head>
-
-            <SideBar>
-                <TopBar />
-                <div className="flex flex-1">
-                    <section className="mb-4 mt-4 flex flex-1 grid-cols-1 flex-col justify-between rounded-lg px-4 pb-4">
+            {/* =========== PAGEWRAPPER =========== */}
+            <div className="flex min-h-screen">
+                <SideBar width="20rem" />
+                {/* =========== CONTENTWRAPPER =========== */}
+                <div className="flex flex-1 flex-col">
+                    <Header />
+                    {/* =========== MAINWRAPPER =========== */}
+                    <main className={'flex h-full justify-center px-4 pb-4'}>
                         <Component {...pageProps} />
-                        <Footer />
-                    </section>
-                    {/* <RightSection /> */}
+                        {/* <RightSection /> */}
+                    </main>
+                    {/* =========== END MAINWRAPPER =========== */}
+                    <Footer />
                 </div>
-            </SideBar>
+                {/* =========== END CONTENTWRAPPER =========== */}
+            </div>
+            {/* =========== END PAGEWRAPPER =========== */}
         </>
     )
 }
