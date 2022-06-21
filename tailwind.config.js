@@ -4,9 +4,9 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
     content: [
-        './pages/**/*.{js,ts,jsx,tsx}',
-        './components/**/*.{js,ts,jsx,tsx}',
-        './stores/**/*.{js,ts,jsx,tsx}',
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './stores/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     darkMode: 'class', // or 'media' or 'class'
     theme: {
@@ -26,7 +26,7 @@ module.exports = {
         extend: {},
     },
     plugins: [
-        // require('@tailwindcss/typography'),
+        require('@tailwindcss/typography'),
         require('@tailwindcss/forms'),
         // ...
     ],

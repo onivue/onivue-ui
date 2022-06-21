@@ -1,32 +1,38 @@
 {
-  "name": "onivue-...",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@tailwindcss/forms": "^0.5.0",
-    "@tailwindcss/typography": "^0.5.2",
-    "classnames": "^2.3.1",
-    "next": "12.1.5",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-hook-form": "^7.30.0",
-    "react-icons": "^4.3.1",
-    "zustand": "^4.0.0-rc.0"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.36",
-    "@types/react": "^18.0.9",
-    "autoprefixer": "^10.4.4",
-    "eslint": "8.13.0",
-    "eslint-config-next": "12.1.5",
-    "postcss": "^8.4.12",
-    "prettier-plugin-tailwindcss": "^0.1.10",
-    "tailwindcss": "^3.0.24"
-  }
+    "name": "onivue-ui",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@mapbox/rehype-prism": "^0.8.0",
+        "@mdx-js/loader": "^2.1.2",
+        "@next/mdx": "^12.1.6",
+        "@tailwindcss/forms": "^0.5.0",
+        "@tailwindcss/typography": "^0.5.2",
+        "classnames": "^2.3.1",
+        "next": "12.1.5",
+        "prismjs": "^1.28.0",
+        "react": "18.0.0",
+        "react-dom": "18.0.0",
+        "react-hook-form": "^7.30.0",
+        "react-icons": "^4.3.1",
+        "react-use-clipboard": "^1.0.8",
+        "zustand": "^4.0.0-rc.0"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.36",
+        "@types/react": "^18.0.9",
+        "autoprefixer": "^10.4.4",
+        "eslint": "8.13.0",
+        "eslint-config-next": "12.1.5",
+        "eslint-plugin-mdx": "^2.0.0",
+        "postcss": "^8.4.12",
+        "prettier-plugin-tailwindcss": "^0.1.10",
+        "tailwindcss": "^3.0.24"
+    }
 }

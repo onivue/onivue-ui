@@ -1,62 +1,79 @@
 import classNames from 'classnames'
-import React from 'react'
+import * as React from 'react'
+import { ImSpinner2 } from 'react-icons/im'
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    children: React.ReactNode
-    onClick?: () => void
-    size?: 'sm' | 'md' | 'lg'
-    disabled?: boolean
-    layout?: 'primary' | 'secondary'
-    rounded?: boolean
-    className?: string
-}
+type ButtonProps = {
+    isLoading?: boolean
+    variant?: 'solid' | 'light' | 'outline' | 'ghost' | 'link'
+} & React.ComponentPropsWithRef<'button'>
 
-const styleBase = classNames(
-    'font-bold align-bottom cursor-pointer transition duration-150 focus:outline-none items-center justify-center',
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ children, className, disabled: buttonDisabled, isLoading, variant = 'solid', ...rest }, ref) => {
+        const disabled = isLoading || buttonDisabled
+
+        return (
+            <button
+                ref={ref}
+                type="button"
+                disabled={disabled}
+                className={classNames(
+                    'inline-flex items-center rounded px-4 py-2 font-semibold',
+                    'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
+                    // 'shadow-sm',
+                    'transition-colors duration-75',
+                    //#region  //*=========== Variants ===========
+                    [
+                        variant === 'solid' && [
+                            'bg-primary-500 text-white',
+                            'border border-primary-600',
+                            'hover:bg-primary-600 hover:text-white',
+                            'active:bg-primary-500',
+                            'disabled:bg-primary-400 disabled:hover:bg-primary-400',
+                        ],
+                        variant === 'light' && [
+                            'text-dark bg-white ',
+                            'border border-gray-300',
+                            'hover:text-dark hover:bg-gray-100',
+                            'active:bg-white/80 disabled:bg-gray-200',
+                        ],
+                        variant === 'outline' && [
+                            'text-primary-500',
+                            'border border-primary-500',
+                            'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+                        ],
+                        variant === 'ghost' && [
+                            'text-primary-500',
+                            'shadow-none',
+                            'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+                        ],
+                    ],
+                    //#endregion  //*======== Variants ===========
+                    'disabled:cursor-not-allowed',
+                    isLoading &&
+                        'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
+                    className,
+                )}
+                {...rest}
+            >
+                {isLoading && (
+                    <div
+                        className={classNames('absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', {
+                            'text-white': ['primary', 'dark'].includes(variant),
+                            'text-black': ['light'].includes(variant),
+                            'text-primary-500': ['outline', 'ghost'].includes(variant),
+                        })}
+                    >
+                        <ImSpinner2 className="animate-spin" />
+                    </div>
+                )}
+                {children}
+            </button>
+        )
+    },
 )
 
-const styleDisabled = classNames('opacity-50 cursor-not-allowed')
-
-const layouts = {
-    primary: {
-        base: 'bg-primary-300 text-primary-700',
-        active: 'active:bg-primary-400 hover:bg-primary-400 focus:ring focus:ring-primary-400',
-    },
-    secondary: {
-        base: 'text-primary-600 bg-primary-100',
-        active: 'active:bg-primary-200 hover:bg-primary-200 focus:ring focus:ring-primary-300',
-    },
+if (process.env.NODE_ENV !== 'production') {
+    Button.displayName = 'Button'
 }
-const sizes = {
-    sm: 'px-3 py-1 text-xs',
-    md: 'px-4 py-2 text-sm',
-    lg: 'px-6 py-3 text-lg',
-}
-export const Button: React.FunctionComponent<Props> = ({
-    layout = 'primary',
-    rounded = false,
-    size,
-    disabled,
-    className,
-    children,
-    onClick,
-    ...rest
-}: Props) => (
-    <button
-        disabled={disabled}
-        className={classNames(
-            className,
-            styleBase,
-            rounded ? 'rounded-full' : 'rounded-xl',
-            sizes[size] || sizes.md,
-            layouts[layout].base || layouts.primary,
-            disabled ? styleDisabled : layouts[layout].active,
-        )}
-        onClick={onClick}
-        {...rest}
-    >
-        {children}
-    </button>
-)
 
 export default Button

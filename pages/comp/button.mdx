@@ -1,0 +1,54 @@
+import Link from "next/link"
+import Button from '@/components/Button/Button'
+
+import PageGenerator from "@/components/PageGenerator/PageGenerator"
+
+export const meta = {
+  title: 'Button',
+  description: 'Migrating from React to Next',
+  date: 'Aug 20, 2020',
+  readTime: 10
+}
+
+export default ({ children }) => <PageGenerator meta={meta}>{children}</PageGenerator>;
+
+
+{/* -------------------------------------------------------------------------------------- */}
+
+### Variants
+
+<div>
+<Button variant="solid">Button</Button>
+<Button variant="light">Button</Button>
+<Button variant="outline">Button</Button>
+<Button variant="ghost">Button</Button>
+</div>
+```jsx
+<Button variant="solid">Button</Button>
+<Button variant="light">Button</Button>
+<Button variant="outline">Button</Button>
+<Button variant="ghost">Button</Button>
+```
+
+---
+### Sizes
+---
+### With icons
+---
+### Loading state
+---
+### Props
+<div className="flex flex-col">
+<li className="flex flex-wrap mt-4">
+  <b className="mr-2">variant</b><span className="text-teal-500">[string]</span>
+  <span className="mx-2">·</span>
+  <span className="text-neutral-500">Default: <span className="ml-1 font-medium text-orange-500"></span>"solid"</span>
+</li>
+<p className="whitespace-normal text-neutral-500">Set the button color</p>
+</div>
+
+
+<Link href="/" >
+   <a>Go back to Home</a>
+</Link>
+
