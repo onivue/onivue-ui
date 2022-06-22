@@ -1,15 +1,36 @@
+import React from 'react'
 import classNames from 'classnames'
-import * as React from 'react'
 import { ImSpinner2 } from 'react-icons/im'
 
 type ButtonProps = {
-    isLoading?: boolean
+    /* The label to show in the button when loading is true */
+    loading?: boolean
+    /* Controls button appearance */
     variant?: 'solid' | 'light' | 'outline' | 'ghost' | 'link'
+    /* Size of the button */
+    size?: 'sm' | 'md' | 'lg'
+    /* Adds icon before button label */
+    leftIcon?: React.ReactElement
+    /* Adds icon after button label */
+    rightIcon?: React.ReactElement
 } & React.ComponentPropsWithRef<'button'>
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ children, className, disabled: buttonDisabled, isLoading, variant = 'solid', ...rest }, ref) => {
-        const disabled = isLoading || buttonDisabled
+    (
+        {
+            children,
+            className,
+            disabled: buttonDisabled,
+            loading,
+            variant = 'solid',
+            size = 'md',
+            leftIcon,
+            rightIcon,
+            ...rest
+        },
+        ref,
+    ) => {
+        const disabled = loading || buttonDisabled
 
         return (
             <button
@@ -17,56 +38,64 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 type="button"
                 disabled={disabled}
                 className={classNames(
-                    'inline-flex items-center rounded px-4 py-2 font-semibold',
+                    'inline-flex items-center px-4 py-2 font-semibold',
+                    'rounded-lg ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
-                    // 'shadow-sm',
                     'transition-colors duration-75',
+                    'disabled:opacity-60',
+                    [
+                        size === 'sm' && 'px-3 py-1 text-sm',
+                        size === 'md' && 'px-4 py-2 text-base',
+                        size === 'lg' && 'px-6 py-3 text-lg',
+                    ],
+
                     //#region  //*=========== Variants ===========
                     [
                         variant === 'solid' && [
-                            'bg-primary-500 text-white',
-                            'border border-primary-600',
-                            'hover:bg-primary-600 hover:text-white',
+                            'bg-primary-400 text-white',
+                            'hover:bg-primary-500 hover:text-white',
                             'active:bg-primary-500',
-                            'disabled:bg-primary-400 disabled:hover:bg-primary-400',
+                            'disabled:bg-primary-400 disabled:text-white',
                         ],
                         variant === 'light' && [
-                            'text-dark bg-white ',
-                            'border border-gray-300',
-                            'hover:text-dark hover:bg-gray-100',
-                            'active:bg-white/80 disabled:bg-gray-200',
+                            'bg-primary-100 text-primary-500 ',
+                            'hover:text-primary-600',
+                            'hover:bg-primary-200 active:bg-primary-100',
+                            'disabled:bg-primary-100 disabled:text-primary-500',
                         ],
                         variant === 'outline' && [
                             'text-primary-500',
                             'border border-primary-500',
-                            'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+                            'hover:bg-primary-50 active:bg-primary-100',
+                            'disabled:bg-primary-100 disabled:text-primary-500',
                         ],
                         variant === 'ghost' && [
                             'text-primary-500',
                             'shadow-none',
-                            'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+                            'hover:bg-primary-50 active:bg-primary-100',
+                            'disabled:text-primary-500 hover:disabled:bg-transparent',
                         ],
                     ],
                     //#endregion  //*======== Variants ===========
                     'disabled:cursor-not-allowed',
-                    isLoading &&
+                    loading &&
                         'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
                     className,
                 )}
                 {...rest}
             >
-                {isLoading && (
-                    <div
-                        className={classNames('absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', {
-                            'text-white': ['primary', 'dark'].includes(variant),
-                            'text-black': ['light'].includes(variant),
-                            'text-primary-500': ['outline', 'ghost'].includes(variant),
-                        })}
-                    >
+                {loading ? (
+                    <>
+                        &nbsp;
                         <ImSpinner2 className="animate-spin" />
-                    </div>
+                    </>
+                ) : (
+                    <>
+                        {leftIcon}
+                        {children}
+                        {rightIcon}
+                    </>
                 )}
-                {children}
             </button>
         )
     },
