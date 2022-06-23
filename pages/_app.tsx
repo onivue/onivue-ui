@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/code.css'
 import Head from 'next/head'
 import { AppProps } from 'next/app'
 import SideBar from '@/components/Layout/SideBar/SideBar'
@@ -20,10 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             <div className="flex min-h-screen">
                 <SideBar width="20rem" />
                 {/* =========== CONTENTWRAPPER =========== */}
-                <div className="h-full w-full">
+                <div className="flex w-full flex-col justify-around">
                     <Header />
                     {/* =========== MAINWRAPPER =========== */}
-                    <main className={'flex h-full justify-center px-4 pb-4'}>
+                    <main className={'flex h-full w-full justify-center px-4 pb-4'}>
                         <Component {...pageProps} />
                         {/* <RightSection /> */}
                     </main>
