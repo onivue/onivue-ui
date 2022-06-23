@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <div className="flex min-h-screen">
                 <SideBar width="20rem" />
                 {/* =========== CONTENTWRAPPER =========== */}
-                <div className="flex flex-1 flex-col">
+                <div className="h-full w-full">
                     <Header />
                     {/* =========== MAINWRAPPER =========== */}
                     <main className={'flex h-full justify-center px-4 pb-4'}>
