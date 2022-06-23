@@ -38,11 +38,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 type="button"
                 disabled={disabled}
                 className={classNames(
-                    'inline-flex items-center px-4 py-2 font-semibold',
+                    'inline-flex h-fit items-center font-semibold',
                     'rounded-lg ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
                     'transition-colors duration-75',
-                    'disabled:opacity-60',
+                    'disabled:cursor-not-allowed disabled:opacity-60',
                     [
                         size === 'sm' && 'px-3 py-1 text-sm',
                         size === 'md' && 'px-4 py-2 text-base',
@@ -77,7 +77,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                         ],
                     ],
                     //#endregion  //*======== Variants ===========
-                    'disabled:cursor-not-allowed',
+
                     loading &&
                         'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
                     className,

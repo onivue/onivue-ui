@@ -16,7 +16,7 @@ module.exports = {
             },
             colors: {
                 primary: {
-                    ...colors.amber,
+                    ...colors.teal,
                 },
             },
             typography(theme) {

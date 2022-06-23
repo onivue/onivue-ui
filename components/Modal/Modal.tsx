@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { Dialog, Transition } from '@headlessui/react'
 import React, { Fragment, useRef } from 'react'
 import { HiOutlineExclamation, HiOutlineInformationCircle, HiOutlinePencilAlt, HiX } from 'react-icons/hi'
+import Button from '../Button/Button'
 
 type ModalProps = {
     title: 'string'
@@ -77,22 +78,23 @@ export default function Modal({
                                 <div className=" dark:bg-dark-100 p-6 dark:text-white">
                                     <div className="items-center sm:flex">
                                         {/* //! -----------------------ICON--------------------------------- */}
-
-                                        {variant === 'warning' && (
-                                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
-                                                <HiOutlineExclamation className="h-6 w-6 text-red-600" />
-                                            </div>
-                                        )}
-                                        {variant === 'info' && (
-                                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
-                                                <HiOutlineInformationCircle className="h-6 w-6 text-blue-600" />
-                                            </div>
-                                        )}
-                                        {variant === 'edit' && (
-                                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
-                                                <HiOutlinePencilAlt className="h-6 w-6 text-primary-600" />
-                                            </div>
-                                        )}
+                                        {[
+                                            variant === 'warning' && (
+                                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
+                                                    <HiOutlineExclamation className="h-6 w-6 text-red-600" />
+                                                </div>
+                                            ),
+                                            variant === 'info' && (
+                                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
+                                                    <HiOutlineInformationCircle className="h-6 w-6 text-blue-600" />
+                                                </div>
+                                            ),
+                                            variant === 'edit' && (
+                                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
+                                                    <HiOutlinePencilAlt className="h-6 w-6 text-primary-600" />
+                                                </div>
+                                            ),
+                                        ]}
                                         {/* //! -----------------------TITLE--------------------------------- */}
                                         <Dialog.Title
                                             as="h3"
@@ -106,33 +108,17 @@ export default function Modal({
                                 </div>
                                 {/* //! -----------------------FOOTER--------------------------------- */}
                                 {(onSubmit || onCancel) && (
-                                    <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                    <div className="gap-2 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                         {onSubmit && (
-                                            <button
-                                                type="button"
-                                                className={classNames(
-                                                    'inline-flex w-full justify-center rounded-md border border-transparent  px-4 py-2 text-base font-medium text-white shadow-sm  focus:outline-none focus:ring-2  focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm',
-                                                    variant === 'warning' &&
-                                                        'bg-red-600 hover:bg-red-700 focus:ring-red-500',
-                                                    variant === 'info' &&
-                                                        'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
-                                                    variant === 'edit' &&
-                                                        'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500',
-                                                )}
-                                                onClick={onSubmit}
-                                            >
+                                            <Button variant="solid" onClick={onSubmit}>
                                                 Submit
-                                            </button>
+                                            </Button>
                                         )}
 
                                         {onCancel && (
-                                            <button
-                                                type="button"
-                                                className="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                                                onClick={onCancel}
-                                            >
+                                            <Button variant="ghost" onClick={onCancel}>
                                                 Cancel
-                                            </button>
+                                            </Button>
                                         )}
                                     </div>
                                 )}
