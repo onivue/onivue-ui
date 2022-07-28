@@ -78,23 +78,21 @@ export default function Modal({
                                 <div className=" dark:bg-dark-100 p-6 dark:text-white">
                                     <div className="items-center sm:flex">
                                         {/* //! -----------------------ICON--------------------------------- */}
-                                        {[
-                                            variant === 'warning' && (
-                                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
-                                                    <HiOutlineExclamation className="h-6 w-6 text-red-600" />
-                                                </div>
-                                            ),
-                                            variant === 'info' && (
-                                                <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
-                                                    <HiOutlineInformationCircle className="h-6 w-6 text-blue-600" />
-                                                </div>
-                                            ),
+                                        {variant === 'warning' ? (
+                                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
+                                                <HiOutlineExclamation className="h-6 w-6 text-red-600" />
+                                            </div>
+                                        ) : variant === 'info' ? (
+                                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
+                                                <HiOutlineInformationCircle className="h-6 w-6 text-blue-600" />
+                                            </div>
+                                        ) : (
                                             variant === 'edit' && (
                                                 <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-100 sm:mx-0 sm:mr-4 sm:h-10 sm:w-10">
                                                     <HiOutlinePencilAlt className="h-6 w-6 text-primary-600" />
                                                 </div>
-                                            ),
-                                        ]}
+                                            )
+                                        )}
                                         {/* //! -----------------------TITLE--------------------------------- */}
                                         <Dialog.Title
                                             as="h3"

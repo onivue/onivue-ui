@@ -1,0 +1,69 @@
+import Link from "next/link"
+import Modal from '@/components/Modal/Modal'
+import { useState } from 'react'
+import { HiMenuAlt2 } from 'react-icons/hi'
+import PageGenerator from "@/components/PageGenerator/PageGenerator"
+import DropDown from '@/components/DropDown/DropDown'
+import Button from '@/components/Button/Button'
+
+export const meta = {
+  title: 'Modal',
+  description: '...',
+  date: '-',
+}
+
+export const propTypes = [
+  {
+    property: "button",
+    type: ["React.ReactElement"],
+    default: "",
+    description: "...",
+  },
+  {
+    property: "direction",
+    type: ["left","right"],
+    default: "",
+    description: "...",
+  },
+  {
+    property: "children",
+    type: ["children"],
+    default: "false",
+    description: "...",
+  },
+];
+
+
+export default ({ children }) => <PageGenerator meta={meta} propTypes={propTypes}>{children}</PageGenerator>;
+
+
+{/* -------------------------------------------------------------------------------------- */}
+
+
+export const Example = () => {
+  return (
+   <DropDown button={<Button>MENU</Button>} direction={'left'}>
+        <DropDown.Item>Home</DropDown.Item>
+        <DropDown.Item>Profile</DropDown.Item>
+        <DropDown.Divider />
+        <DropDown.Item>Settings</DropDown.Item>
+        <DropDown.Item>Logout</DropDown.Item>
+    </DropDown>
+  )
+}
+
+### Basic usage
+<div className="flex gap-2">
+<Example/>
+</div>
+```jsx
+<div>
+    <DropDown button={<Button>MENU</Button>} direction={'right'}>
+        <DropDown.Item>Home</DropDown.Item>
+        <DropDown.Item>Profile</DropDown.Item>
+        <DropDown.Divider />
+        <DropDown.Item>Settings</DropDown.Item>
+        <DropDown.Item>Logout</DropDown.Item>
+    </DropDown>
+</div>
+```

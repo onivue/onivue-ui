@@ -1,27 +1,18 @@
 import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useRef, useState } from 'react'
-import { HiChevronDown } from 'react-icons/hi'
-import Button from '@/components/Button/Button'
+import { Fragment } from 'react'
 import classNames from 'classnames'
 
-const menu = () => {
-    return (
-        <div>
-            <DropDown button={<Button>MENU</Button>} direction={'right'}>
-                <DropDown.Item>XX</DropDown.Item>
-                <DropDown.Divider />
-                <DropDown.Item>XX</DropDown.Item>
-                <DropDown.Item>XX</DropDown.Item>
-                <DropDown.Item>XX</DropDown.Item>
-            </DropDown>
-        </div>
-    )
-}
+type DropDownProps = {
+    button: React.ReactElement
+    direction?: 'left' | 'right'
+} & React.ComponentPropsWithoutRef<'div'>
 
-export default menu
+type DropDownItemProps = {} & React.ComponentPropsWithoutRef<'div'>
 
-const DropDown = ({ button, children, direction }) => {
+type DropDownDividerProps = {} & React.ComponentPropsWithoutRef<'div'>
+
+const DropDown = ({ button, children, direction }: DropDownProps) => {
     return (
         <>
             <Menu as="div" className="relative inline-block text-left">
@@ -38,7 +29,7 @@ const DropDown = ({ button, children, direction }) => {
                     <Menu.Items
                         className={classNames(
                             [direction === 'right' && 'right-0', direction === 'left' && 'left-0'],
-                            'absolute  mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-primary-300 ring-opacity-40 focus:outline-none',
+                            'absolute mt-2 grid w-56 origin-top-right rounded-md bg-white p-1.5 shadow-lg ring-1 ring-primary-300 ring-opacity-40 focus:outline-none',
                         )}
                     >
                         {children}
@@ -49,12 +40,14 @@ const DropDown = ({ button, children, direction }) => {
     )
 }
 
-const DropDownItem = ({ children }) => {
-    return <div>{children}</div>
+const DropDownItem = ({ children }: DropDownItemProps) => {
+    return <div className="cursor-pointer rounded-lg py-1.5 px-2 hover:bg-primary-50">{children}</div>
 }
 DropDown.Item = DropDownItem
 
-const DropDownDivider = () => {
-    return <hr />
+const DropDownDivider = ({}: DropDownDividerProps) => {
+    return <hr className="my-1.5" />
 }
 DropDown.Divider = DropDownDivider
+
+export default DropDown

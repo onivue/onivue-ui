@@ -19,6 +19,13 @@ const SideBarNavigation = () => {
                         </a>
                     </Link>
                 </div>
+                <div className="flex flex-col space-y-0">
+                    <Link href="/comp/dropdown">
+                        <a className="cursor-base relative flex w-full items-center rounded border-0 bg-transparent px-2 py-1 text-base hover:text-primary-400">
+                            Dropdown
+                        </a>
+                    </Link>
+                </div>
             </div>
         </nav>
     )
