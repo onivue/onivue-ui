@@ -3,6 +3,7 @@ import { RegisterOptions, DeepMap, FieldError, UseFormRegister, Path } from 'rea
 import { ErrorMessage } from '@hookform/error-message'
 import classNames from 'classnames'
 import get from 'lodash.get'
+//INSPIRATION: https://stackblitz.com/edit/reusable-rhf-ts-pt6?file=src%2Fcomponents%2Fatoms%2Finput.tsx,src%2Fcomponents%2Fmolecules%2Fform-textarea.tsx
 
 type InputProps<TFormValues> = {
     name: Path<TFormValues>
@@ -26,32 +27,33 @@ const Input = <TFormValues extends Record<string, unknown>>({
     size = 'md',
     dot = false,
     className,
+    disabled,
     ...props
 }: InputProps<TFormValues>) => {
     const errorMessages: { type: any; message: any; ref: any } = get(errors, name)
     const hasError: boolean = !!(errors && errorMessages)
     return (
-        <div className="relative mt-2">
+        <div className="flex flex-col">
             <label
                 htmlFor={name}
-                className="absolute -translate-y-2.5 translate-x-2 bg-white px-1.5 text-sm font-bold text-gray-800"
+                className=" mb-1.5 rounded-lg bg-white px-1.5 text-sm font-bold text-gray-800"
             >
                 {label} {dot && <span className="text-red-400">*</span>}
             </label>
 
             <input
                 className={classNames(
-                    'w-full rounded-lg border-2 transition-colors duration-150 ease-in',
-                    hasError
-                        ? 'border-red-300 focus:border-red-400 focus:ring-red-400'
-                        : 'border-gray-800 focus:border-primary-400 focus:ring-primary-400',
+                    'w-full rounded-lg border-none ring-2 ring-black transition duration-150 ease-in',
+                    hasError ? 'focus:ring-2 focus:ring-red-400' : 'focus:ring-2 focus:ring-primary-400',
                     size === 'md' && 'py-2.5 text-base',
                     size === 'lg' && 'py-3 text-lg',
+                    disabled && 'cursor-not-allowed opacity-50',
                 )}
                 aria-invalid={errors[name] ? 'true' : 'false'}
                 type={type}
                 name={name}
                 id={name}
+                disabled={disabled}
                 {...(register && register(name, rules))}
                 {...props}
             />

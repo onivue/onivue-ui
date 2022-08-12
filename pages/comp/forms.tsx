@@ -1,3 +1,4 @@
+import Button from '@/components/Button/Button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Input from './Input'
@@ -38,7 +39,7 @@ export default function App() {
                     errors={errors}
                 />
                 <br />
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
             </form>
         </div>
     )
