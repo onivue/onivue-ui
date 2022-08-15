@@ -4,7 +4,7 @@ import router from 'next/router'
 import { HiOutlineCog, HiOutlineUser } from 'react-icons/hi'
 import { BsPinAngle } from 'react-icons/bs'
 import LogoIcon from '@/components/LogoIcon/LogoIcon'
-import Button from '@/components/Button/Button'
+import Button from 'o-ui/Button/Button'
 import { HiOutlineLogin, HiOutlineLogout } from 'react-icons/hi'
 
 function Header() {
