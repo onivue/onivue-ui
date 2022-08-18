@@ -12,8 +12,8 @@ export const navigation: Navigation = [
         href: null,
         children: [
             { title: 'Button', href: '/comp/button' },
-            { title: 'Input', href: '/comp/input' },
-            { title: 'Textarea', href: '/comp/textarea', disabled },
+            { title: 'Input', href: '/comp/forms' },
+            { title: 'Textarea', href: '/comp/forms' },
             { title: 'Select', href: '/comp/select', disabled },
             { title: 'Checkbox', href: '/comp/checkbox', disabled },
             { title: 'Radio', href: '/comp/radio', disabled },

@@ -2,10 +2,12 @@ import Button from 'o-ui/Button/Button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Input from '@/o-ui/Input/Input'
+import Textarea from '@/o-ui/Textarea/Textarea'
 
 type FormData = {
     name: string
     password: string
+    text: string
 }
 
 export default function App() {
@@ -60,6 +62,20 @@ export default function App() {
                         },
                     })}
                     errorMessage={errors.password?.message}
+                />
+                <Textarea
+                    cols={5}
+                    rows={5}
+                    label="Text"
+                    {...register('text', {
+                        required: 'Field is required',
+                        maxLength: {
+                            value: 4,
+                            message: 'This input exceed maxLength.',
+                        },
+                    })}
+                    invalid={Boolean(errors.text)}
+                    errorMessage={errors.text?.message}
                 />
                 <br />
                 <Button type="submit">Submit</Button>

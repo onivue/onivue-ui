@@ -1,17 +1,16 @@
-import classNames from 'classnames'
 import * as React from 'react'
-import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 import Label from '@/o-ui/Label/Label'
+import classNames from 'classnames'
 
-export type InputProps<T = HTMLInputElement> = {
+export type TextareaProps<T = HTMLTextAreaElement> = {
     /* Makes input disabled */
-    disabled?: React.InputHTMLAttributes<T>['disabled']
+    disabled?: React.TextareaHTMLAttributes<T>['disabled']
     /* Makes input invalid */
     invalid?: boolean
     /* Makes input required */
-    required?: React.InputHTMLAttributes<T>['required']
+    required?: React.TextareaHTMLAttributes<T>['required']
     /* Makes input readOnly */
-    readOnly?: React.InputHTMLAttributes<T>['readOnly']
+    readOnly?: React.TextareaHTMLAttributes<T>['readOnly']
     /* Size of the input */
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     /** Controls input appearance */
@@ -25,12 +24,12 @@ export type InputProps<T = HTMLInputElement> = {
     dot?: boolean
     errorMessage?: string
 } & Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
+    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
     'size' | 'disabled' | 'required' | 'checked' | 'defaultChecked' | 'readOnly'
 > &
     React.RefAttributes<T>
 
-export const Input = React.forwardRef<HTMLElement, InputProps>(
+export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
     (
         {
             size = 'md',
@@ -39,7 +38,6 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
             'aria-label': ariaLabel,
             'aria-describedby': ariaDescribedby,
             className,
-            type = 'text',
             name,
             invalid,
             errorMessage,
@@ -50,7 +48,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
             dot,
             ...rest
         },
-        ref?: React.Ref<HTMLInputElement>,
+        ref?: React.Ref<HTMLTextAreaElement>,
     ) => {
         const [showPassword, setShowPassword] = React.useState(false)
 
@@ -58,7 +56,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
             <div className="flex flex-col">
                 <Label htmlFor={name} dot={dot} label={label} />
                 <div className="relative">
-                    <input
+                    <textarea
                         ref={ref}
                         readOnly={readOnly}
                         aria-readonly={readOnly}
@@ -79,22 +77,10 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
                             size === 'lg' && 'py-3 text-lg',
                             disabled && 'cursor-not-allowed opacity-50',
                         )}
-                        type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
                         id={name}
                         name={name}
                         {...rest}
                     />
-                    {type === 'password' && (
-                        <div
-                            onClick={(e) => {
-                                e.preventDefault()
-                                setShowPassword(!showPassword)
-                            }}
-                            className="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-xl text-primary-500"
-                        >
-                            {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
-                        </div>
-                    )}
                 </div>
                 {errorMessage && <div className="mt-1 text-sm text-red-600">{errorMessage}</div>}
             </div>
@@ -103,6 +89,6 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
 )
 
 if (process.env.NODE_ENV !== 'production') {
-    Input.displayName = 'Input'
+    Textarea.displayName = 'Input'
 }
-export default Input
+export default Textarea
