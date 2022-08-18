@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function BlogPost({ children, meta, propTypes }) {
+export default function PageGenerator({ children, meta, propTypes }) {
     return (
         <div className="w-full rounded-lg px-0 lg:px-4">
             <h1 className="mb-8 mt-6 text-3xl font-extrabold">{meta.title}</h1>

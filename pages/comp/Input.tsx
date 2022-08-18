@@ -1,11 +1,11 @@
 import Button from 'o-ui/Button/Button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import Input from '../../o-ui/Input/Input'
+import Input from '@/o-ui/Input/Input'
 
 type FormData = {
     name: string
-    username: string
+    password: string
 }
 
 export default function App() {
@@ -28,20 +28,38 @@ export default function App() {
 
     return (
         <div className="w-full">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="grid gap-2">
                 <Input
-                    name="name"
                     label="Name"
+                    name="name"
                     type="text"
                     invalid={Boolean(errors.name)}
                     {...register('name', {
-                        required: 'ERROR',
-                        // maxLength: {
-                        //     value: 4,
-                        //     message: 'This input exceed maxLength.',
-                        // },
+                        required: 'Field is required',
+                        maxLength: {
+                            value: 4,
+                            message: 'This input exceed maxLength.',
+                        },
                     })}
                     errorMessage={errors.name?.message}
+                />
+                <Input
+                    label="Password"
+                    name="password"
+                    type="password"
+                    invalid={Boolean(errors.password)}
+                    {...register('password', {
+                        required: 'Field is required',
+                        maxLength: {
+                            value: 10,
+                            message: 'This input exceed maxLength.',
+                        },
+                        minLength: {
+                            value: 5,
+                            message: 'This input exceed minLength.',
+                        },
+                    })}
+                    errorMessage={errors.password?.message}
                 />
                 <br />
                 <Button type="submit">Submit</Button>

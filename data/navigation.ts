@@ -1,15 +1,23 @@
-export const navigation = [
+type Navigation = {
+    title: string
+    href: string | null
+    children: { title: string; href: string | null; disabled?: boolean }[]
+}[]
+
+const disabled = true
+
+export const navigation: Navigation = [
     {
         title: 'FORMS',
         href: null,
         children: [
             { title: 'Button', href: '/comp/button' },
             { title: 'Input', href: '/comp/input' },
-            { title: 'Textarea', href: '/comp/textarea' },
-            { title: 'Select', href: '/comp/select' },
-            { title: 'Checkbox', href: '/comp/checkbox' },
-            { title: 'Radio', href: '/comp/radio' },
-            { title: 'Switch', href: '/comp/switch' },
+            { title: 'Textarea', href: '/comp/textarea', disabled },
+            { title: 'Select', href: '/comp/select', disabled },
+            { title: 'Checkbox', href: '/comp/checkbox', disabled },
+            { title: 'Radio', href: '/comp/radio', disabled },
+            { title: 'Switch', href: '/comp/switch', disabled },
         ],
     },
     {
@@ -17,7 +25,12 @@ export const navigation = [
         href: null,
         children: [
             { title: 'Modal', href: '/comp/modal' },
-            { title: 'Dropdown', href: '/comp/button' },
+            { title: 'Dropdown', href: '/comp/dropdown' },
         ],
+    },
+    {
+        title: 'MEDIA',
+        href: null,
+        children: [{ title: 'Icon', href: '/comp/icon' }],
     },
 ]

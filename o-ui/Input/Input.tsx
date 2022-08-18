@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import * as React from 'react'
+import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 
 export type InputProps<T = HTMLInputElement> = {
     /* Makes input disabled */
@@ -20,8 +21,7 @@ export type InputProps<T = HTMLInputElement> = {
      * The element or component to use in place of `input`
      */
     as?: React.ElementType
-    /** */
-    type?: string
+
     /**
      * A11y: A label that describes the input
      */
@@ -60,41 +60,53 @@ export const Input = React.forwardRef<HTMLElement, InputProps>((props, ref) => {
         ...rest
     } = props
 
+    const [showPassword, setShowPassword] = React.useState(false)
+
     return (
         <div className="flex flex-col">
-            <label
-                htmlFor={name}
-                className=" mb-1.5 rounded-lg bg-white px-1.5 text-sm font-bold text-gray-800"
-            >
+            <label htmlFor={name} className=" mb-1.5 rounded-lg px-1.5 text-sm font-bold text-gray-800">
                 {label} {dot && <span className="text-red-400">*</span>}
             </label>
-            <Comp
-                ref={ref}
-                readOnly={readOnly}
-                aria-readonly={readOnly}
-                disabled={disabled}
-                aria-disabled={disabled}
-                aria-label={ariaLabel}
-                aria-invalid={invalid}
-                required={required}
-                aria-required={required}
-                aria-describedby={ariaDescribedby}
-                data-color={color ? color : undefined}
-                className={classNames(
-                    'w-full rounded-lg transition duration-150 ease-in',
-                    invalid
-                        ? 'border-none ring-2 ring-red-400 focus:ring-2 focus:ring-red-400'
-                        : 'border-none ring-2 ring-black focus:ring-2 focus:ring-primary-400',
-                    size === 'md' && 'py-2.5 text-base',
-                    size === 'lg' && 'py-3 text-lg',
-                    disabled && 'cursor-not-allowed opacity-50',
+            <div className="relative">
+                <Comp
+                    ref={ref}
+                    readOnly={readOnly}
+                    aria-readonly={readOnly}
+                    disabled={disabled}
+                    aria-disabled={disabled}
+                    aria-label={ariaLabel}
+                    aria-invalid={invalid}
+                    required={required}
+                    aria-required={required}
+                    aria-describedby={ariaDescribedby}
+                    data-color={color ? color : undefined}
+                    className={classNames(
+                        'w-full rounded-lg transition duration-150 ease-in',
+                        invalid
+                            ? 'border-none ring-2 ring-red-400 focus:ring-2 focus:ring-red-400'
+                            : 'border-none ring-2 ring-black focus:ring-2 focus:ring-primary-400',
+                        size === 'md' && 'py-2.5 text-base',
+                        size === 'lg' && 'py-3 text-lg',
+                        disabled && 'cursor-not-allowed opacity-50',
+                    )}
+                    type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
+                    id={name}
+                    name={name}
+                    {...rest}
+                />
+                {type === 'password' && (
+                    <div
+                        onClick={(e) => {
+                            e.preventDefault()
+                            setShowPassword(!showPassword)
+                        }}
+                        className="absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-xl text-primary-500"
+                    >
+                        {showPassword ? <HiOutlineEyeOff /> : <HiOutlineEye />}
+                    </div>
                 )}
-                type={type}
-                id={name}
-                name={name}
-                {...rest}
-            />
-            <div className="mt-1 text-sm text-red-600">{errorMessage}</div>
+            </div>
+            {errorMessage && <div className="mt-1 text-sm text-red-600">{errorMessage}</div>}
         </div>
     )
 })

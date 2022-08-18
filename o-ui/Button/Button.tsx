@@ -38,7 +38,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 type="button"
                 disabled={disabled}
                 className={classNames(
-                    'inline-flex h-fit items-center font-semibold',
+                    'flex h-fit items-center justify-center font-semibold',
                     'rounded-lg ',
                     'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
                     'transition-colors duration-75',
@@ -86,7 +86,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             >
                 {loading ? (
                     <>
-                        &nbsp;
                         <ImSpinner2 className="animate-spin" />
                     </>
                 ) : (
