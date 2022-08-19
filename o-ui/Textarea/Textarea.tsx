@@ -54,7 +54,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
 
         return (
             <div className="flex flex-col">
-                <Label htmlFor={name} dot={dot} label={label} />
+                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold />
                 <div className="relative">
                     <textarea
                         ref={ref}

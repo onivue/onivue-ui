@@ -6,7 +6,7 @@ import classNames from 'classnames'
 const SideBarNavigation = () => {
     const router = useRouter()
     const currentRoute = router.pathname
-    console.log(currentRoute)
+
     return (
         <nav className="flex flex-col gap-8">
             <div className="mb-3">
@@ -22,7 +22,7 @@ const SideBarNavigation = () => {
                                         className={classNames(
                                             currentRoute === navChild.href &&
                                                 'underline decoration-primary-400 decoration-2 underline-offset-2',
-                                            'cursor-base relative flex w-full items-center rounded border-0 bg-transparent px-2 py-1 text-base font-light hover:text-primary-400',
+                                            'cursor-base relative flex w-full items-center rounded border-0 bg-transparent px-2 py-1 text-base font-light transition-all hover:text-primary-400',
                                         )}
                                     >
                                         {navChild.title}

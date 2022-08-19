@@ -56,7 +56,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
 
         return (
             <div className="flex flex-col">
-                <Label htmlFor={name} dot={dot} label={label} />
+                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold />
                 <div className="relative">
                     <input
                         ref={ref}
