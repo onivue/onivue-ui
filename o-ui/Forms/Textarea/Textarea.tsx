@@ -1,6 +1,7 @@
 import * as React from 'react'
-import Label from '@/o-ui/Label/Label'
 import classNames from 'classnames'
+import Label from '@/o-ui/forms/Label/Label'
+import FormFieldErrorMessage from '@/o-ui/forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type TextareaProps<T = HTMLTextAreaElement> = {
     /* Makes input disabled */
@@ -55,7 +56,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
         return (
             <div className="flex flex-col">
                 <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold />
-                <div className="relative">
+                <div className="relative flex">
                     <textarea
                         ref={ref}
                         readOnly={readOnly}
@@ -82,7 +83,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
                         {...rest}
                     />
                 </div>
-                {errorMessage && <div className="mt-1 text-sm text-red-600">{errorMessage}</div>}
+                {errorMessage && <FormFieldErrorMessage className="mt-1" errorMessage={errorMessage} />}
             </div>
         )
     },

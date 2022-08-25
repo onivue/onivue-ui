@@ -1,15 +1,19 @@
 import Button from 'o-ui/Button/Button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import Input from '@/o-ui/Input/Input'
-import Textarea from '@/o-ui/Textarea/Textarea'
+import Input from '@/o-ui/forms/Input/Input'
+import Textarea from '@/o-ui/forms/Textarea/Textarea'
 import classNames from 'classnames'
-import Label from '@/o-ui/Label/Label'
+import Label from '@/o-ui/forms/Label/Label'
+import Switch from '@/o-ui/forms/Switch/Switch'
+import Radio from '@/o-ui/forms/Radio/Radio'
 
 type FormData = {
     name: string
     password: string
     text: string
+    checkbox: boolean
+    radio: string
 }
 
 export default function App() {
@@ -24,8 +28,8 @@ export default function App() {
     })
 
     const onSubmit = handleSubmit(
-        ({ name }) => {
-            console.log(name)
+        (formV) => {
+            console.log(formV)
         },
         (e) => console.log(e),
     )
@@ -35,7 +39,6 @@ export default function App() {
             <form onSubmit={onSubmit} className="grid gap-4">
                 <Input
                     label="Name"
-                    name="name"
                     type="text"
                     invalid={Boolean(errors.name)}
                     {...register('name', {
@@ -49,7 +52,6 @@ export default function App() {
                 />
                 <Input
                     label="Password"
-                    name="password"
                     type="password"
                     invalid={Boolean(errors.password)}
                     {...register('password', {
@@ -79,40 +81,11 @@ export default function App() {
                     invalid={Boolean(errors.text)}
                     errorMessage={errors.text?.message}
                 />
-                {/* TODO: Checkbox */}
-                <div className="relative w-10 select-none align-middle">
-                    <input
-                        type="checkbox"
-                        id={'chk'}
-                        name={'chk'}
-                        className={classNames(
-                            'absolute right-4 block h-6 w-6 cursor-pointer rounded-full border-4 border-black bg-white text-primary-400 ring-primary-300 duration-200 ease-in checked:right-0',
-                            'checked:bg-primary-400 focus:border-primary-400  focus:ring-2 focus:ring-primary-200',
-                        )}
-                    />
-                    <span className="block h-6 overflow-hidden rounded-full bg-gray-300"></span>
-                </div>
-                {/* TODO: Radio */}
-                <div className="flex items-center">
-                    <input
-                        id="default-radio-1"
-                        type="radio"
-                        name="default-radio"
-                        className="h-6 w-6 border-gray-300 bg-gray-100 text-primary-400 transition-all focus:ring-2 focus:ring-primary-400"
-                    />
-                    <Label label="Default radio" htmlFor="default-radio-1" className="mb-0 ml-2" />
-                </div>
 
-                <div className="flex items-center">
-                    <input
-                        id="default-radio-2"
-                        type="radio"
-                        name="default-radio"
-                        className="h-6 w-6 border-gray-300 bg-gray-100 text-primary-400 transition-all focus:ring-2 focus:ring-primary-400"
-                    />
+                <Switch {...register('checkbox')} label="Switch/Checkbox" />
 
-                    <Label label="Default radio" htmlFor="default-radio-2" className="mb-0 ml-2" />
-                </div>
+                <Radio {...register('radio', { required: 'Checkbox' })} label="Radio-1" value="Radio-1" />
+                <Radio {...register('radio')} label="Radio-2" value="Radio-2" />
 
                 <Button type="submit">Submit</Button>
             </form>

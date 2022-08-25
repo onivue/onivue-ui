@@ -1,7 +1,8 @@
 import classNames from 'classnames'
 import * as React from 'react'
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
-import Label from '@/o-ui/Label/Label'
+import Label from '@/o-ui/forms/Label/Label'
+import FormFieldErrorMessage from '@/o-ui/forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type InputProps<T = HTMLInputElement> = {
     /* Makes input disabled */
@@ -96,7 +97,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
                         </div>
                     )}
                 </div>
-                {errorMessage && <div className="mt-1 text-sm text-red-600">{errorMessage}</div>}
+                {errorMessage && <FormFieldErrorMessage className="mt-1" errorMessage={errorMessage} />}
             </div>
         )
     },

@@ -16,8 +16,8 @@ export const navigation: Navigation = [
             { title: 'Textarea', href: '/comp/forms' },
             { title: 'Select', href: '/comp/select', disabled },
             { title: 'Checkbox', href: '/comp/checkbox', disabled },
-            { title: 'Radio', href: '/comp/radio', disabled },
-            { title: 'Switch', href: '/comp/switch', disabled },
+            { title: 'Radio', href: '/comp/forms' },
+            { title: 'Switch', href: '/comp/forms' },
         ],
     },
     {

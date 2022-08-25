@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import { HiMenuAlt2 } from 'react-icons/hi'
 import LogoIcon from '@/components/LogoIcon/LogoIcon'
 import SideBarNavigation from '@/components/Layout/SideBar/SideBarNavigation'
@@ -7,6 +8,8 @@ import SideBarNavigation from '@/components/Layout/SideBar/SideBarNavigation'
 export default function SideBar({ hidden = false, width = '20rem' }) {
     const [sideBarIsOpen, toggleSideBar] = useState(false)
     const ref = useRef(null)
+    // CLOSE SIDEBAR WHEN ROUTE CHANGES
+    Router.events.on('routeChangeStart', () => toggleSideBar(false))
     //MOBILE SIDEBAR TOGGLE HANDLER
     useEffect(() => {
         const handleOutsideClick = (event) => {

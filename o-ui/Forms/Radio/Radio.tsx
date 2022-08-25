@@ -1,0 +1,61 @@
+import React from 'react'
+import classNames from 'classnames'
+import Label from '@/o-ui/forms/Label/Label'
+import FormFieldErrorMessage from '@/o-ui/forms/FormFieldErrorMessage/FormFieldErrorMessage'
+
+export type RadioProps<T = HTMLInputElement> = {
+    /* Makes input disabled */
+    disabled?: React.InputHTMLAttributes<T>['disabled']
+    /* Makes input invalid */
+    invalid?: boolean
+    /* Makes input required */
+    required?: React.InputHTMLAttributes<T>['required']
+    /* Makes input readOnly */
+    readOnly?: React.InputHTMLAttributes<T>['readOnly']
+    /* A11y: A label that describes the input */
+    'aria-label'?: string
+    /* A11y: The id of the element that describes the input */
+    'aria-describedby'?: string
+    /*  */
+    label?: string
+    dot?: boolean
+    errorMessage?: string
+    type?: 'radio'
+} & Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    'disabled' | 'required' | 'checked' | 'defaultChecked' | 'readOnly' | 'type'
+> &
+    React.RefAttributes<T>
+
+const Radio = React.forwardRef<HTMLElement, RadioProps>(
+    (
+        { name, invalid, disabled, required, label, dot, errorMessage, ...rest },
+        ref?: React.Ref<HTMLInputElement>,
+    ) => {
+        return (
+            <div className="flex items-center">
+                <input
+                    ref={ref}
+                    disabled={disabled}
+                    aria-disabled={disabled}
+                    required={required}
+                    name={name}
+                    type="radio"
+                    className={classNames(
+                        'h-6 w-6 border-gray-300 bg-gray-100 text-primary-400 transition-all focus:ring-2 focus:ring-primary-400',
+                        disabled && 'cursor-not-allowed opacity-30',
+                    )}
+                    {...rest}
+                />
+
+                <Label label={label} htmlFor={name} dot={dot} className="mb-0 ml-2" />
+                {errorMessage && <FormFieldErrorMessage className="ml-4" errorMessage={errorMessage} />}
+            </div>
+        )
+    },
+)
+
+if (process.env.NODE_ENV !== 'production') {
+    Radio.displayName = 'Radio'
+}
+export default Radio
