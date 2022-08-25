@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import Label from '@/o-ui/forms/Label/Label'
-import FormFieldErrorMessage from '@/o-ui/forms/FormFieldErrorMessage/FormFieldErrorMessage'
+import Label from '@/o-ui/Forms/Label/Label'
+import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type TextareaProps<T = HTMLTextAreaElement> = {
     /* Makes input disabled */

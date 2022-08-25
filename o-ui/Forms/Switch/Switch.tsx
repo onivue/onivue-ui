@@ -1,7 +1,7 @@
 import React from 'react'
-import Label from '@/o-ui/forms/Label/Label'
+import Label from '@/o-ui/Forms/Label/Label'
 import classNames from 'classnames'
-import FormFieldErrorMessage from '@/o-ui/forms/FormFieldErrorMessage/FormFieldErrorMessage'
+import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type SwitchProps<T = HTMLInputElement> = {
     /* Makes input disabled */

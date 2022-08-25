@@ -1,12 +1,12 @@
 import Button from 'o-ui/Button/Button'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import Input from '@/o-ui/forms/Input/Input'
-import Textarea from '@/o-ui/forms/Textarea/Textarea'
+import Input from '@/o-ui/Forms/Input/Input'
+import Textarea from '@/o-ui/Forms/Textarea/Textarea'
 import classNames from 'classnames'
-import Label from '@/o-ui/forms/Label/Label'
-import Switch from '@/o-ui/forms/Switch/Switch'
-import Radio from '@/o-ui/forms/Radio/Radio'
+import Label from '@/o-ui/Forms/Label/Label'
+import Switch from '@/o-ui/Forms/Switch/Switch'
+import Radio from '@/o-ui/Forms/Radio/Radio'
 
 type FormData = {
     name: string
