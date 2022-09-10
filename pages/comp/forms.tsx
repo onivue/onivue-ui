@@ -22,6 +22,7 @@ export default function App() {
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>({
+        mode: 'onSubmit',
         defaultValues: {
             name: '',
         },

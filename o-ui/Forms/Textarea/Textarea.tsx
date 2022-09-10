@@ -4,23 +4,14 @@ import Label from '@/o-ui/Forms/Label/Label'
 import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type TextareaProps<T = HTMLTextAreaElement> = {
-    /* Makes input disabled */
     disabled?: React.TextareaHTMLAttributes<T>['disabled']
-    /* Makes input invalid */
     invalid?: boolean
-    /* Makes input required */
     required?: React.TextareaHTMLAttributes<T>['required']
-    /* Makes input readOnly */
     readOnly?: React.TextareaHTMLAttributes<T>['readOnly']
-    /* Size of the input */
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    /** Controls input appearance */
     variant?: 'outline' | 'solid'
-    /* A11y: A label that describes the input */
     'aria-label'?: string
-    /* A11y: The id of the element that describes the input */
     'aria-describedby'?: string
-    /*  */
     label?: string
     dot?: boolean
     errorMessage?: string
@@ -55,7 +46,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
 
         return (
             <div className="flex flex-col">
-                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold />
+                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold disabled={disabled} />
                 <div className="relative flex">
                     <textarea
                         ref={ref}

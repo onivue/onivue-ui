@@ -5,23 +5,14 @@ import Label from '@/o-ui/Forms/Label/Label'
 import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type InputProps<T = HTMLInputElement> = {
-    /* Makes input disabled */
     disabled?: React.InputHTMLAttributes<T>['disabled']
-    /* Makes input invalid */
     invalid?: boolean
-    /* Makes input required */
     required?: React.InputHTMLAttributes<T>['required']
-    /* Makes input readOnly */
     readOnly?: React.InputHTMLAttributes<T>['readOnly']
-    /* Size of the input */
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    /** Controls input appearance */
     variant?: 'outline' | 'solid'
-    /* A11y: A label that describes the input */
     'aria-label'?: string
-    /* A11y: The id of the element that describes the input */
     'aria-describedby'?: string
-    /*  */
     label?: string
     dot?: boolean
     errorMessage?: string
@@ -57,7 +48,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
 
         return (
             <div className="flex flex-col">
-                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold />
+                <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold disabled={disabled} />
                 <div className="relative">
                     <input
                         ref={ref}
@@ -85,7 +76,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
                         name={name}
                         {...rest}
                     />
-                    {type === 'password' && (
+                    {type === 'password' && !disabled && (
                         <div
                             onClick={(e) => {
                                 e.preventDefault()

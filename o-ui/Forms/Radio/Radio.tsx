@@ -4,19 +4,12 @@ import Label from '@/o-ui/Forms/Label/Label'
 import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type RadioProps<T = HTMLInputElement> = {
-    /* Makes input disabled */
     disabled?: React.InputHTMLAttributes<T>['disabled']
-    /* Makes input invalid */
     invalid?: boolean
-    /* Makes input required */
     required?: React.InputHTMLAttributes<T>['required']
-    /* Makes input readOnly */
     readOnly?: React.InputHTMLAttributes<T>['readOnly']
-    /* A11y: A label that describes the input */
     'aria-label'?: string
-    /* A11y: The id of the element that describes the input */
     'aria-describedby'?: string
-    /*  */
     label?: string
     dot?: boolean
     errorMessage?: string
@@ -48,7 +41,7 @@ const Radio = React.forwardRef<HTMLElement, RadioProps>(
                     {...rest}
                 />
 
-                <Label label={label} htmlFor={name} dot={dot} className="mb-0 ml-2" />
+                <Label label={label} htmlFor={name} dot={dot} className="mb-0 ml-2" disabled={disabled} />
                 {errorMessage && <FormFieldErrorMessage className="ml-4" errorMessage={errorMessage} />}
             </div>
         )

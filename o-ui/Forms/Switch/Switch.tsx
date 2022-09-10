@@ -4,19 +4,12 @@ import classNames from 'classnames'
 import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type SwitchProps<T = HTMLInputElement> = {
-    /* Makes input disabled */
     disabled?: React.InputHTMLAttributes<T>['disabled']
-    /* Makes input invalid */
     invalid?: boolean
-    /* Makes input required */
     required?: React.InputHTMLAttributes<T>['required']
-    /* Makes input readOnly */
     readOnly?: React.InputHTMLAttributes<T>['readOnly']
-    /* A11y: A label that describes the input */
     'aria-label'?: string
-    /* A11y: The id of the element that describes the input */
     'aria-describedby'?: string
-    /*  */
     label?: string
     dot?: boolean
     errorMessage?: string
@@ -34,7 +27,7 @@ const Switch = React.forwardRef<HTMLElement, SwitchProps>(
     ) => {
         return (
             <div className="flex flex-col">
-                <Label label={label} htmlFor={name} dot={dot} className="mb-1.5" bold />
+                <Label label={label} htmlFor={name} dot={dot} className="mb-1.5" bold disabled={disabled} />
                 <div
                     className={classNames(
                         'relative w-10 select-none align-middle',
