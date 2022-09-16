@@ -8,11 +8,9 @@ export default function Home() {
             <div className="mx-auto py-20 text-center">
                 <h2 className="pb-4 text-xl font-bold">onivue.ch</h2>
                 <h1 className="bg-gradient-to-r from-primary-200 via-primary-400 to-primary-500 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                    TEMPLATE
+                    O-UI
                 </h1>
-                <p className="pt-4 text-xl text-gray-500 ">
-                    There are many ways to learn, some are better than others.
-                </p>
+                <p className="pt-4 text-xl text-gray-500 ">React + Tailwind UI Components</p>
             </div>
             <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-7xl ">
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
