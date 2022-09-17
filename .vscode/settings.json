@@ -1,0 +1,42 @@
+{
+    "files.exclude": {
+        "node_modules/": true
+    },
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.lineHeight": 22,
+    "editor.matchBrackets": "never",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.smoothScrolling": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.minimap.enabled": false,
+    "editor.suggestSelection": "first",
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'Fira Code',Consolas,'Cascadia Code', 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "explorer.compactFolders": false,
+    "workbench.tree.indent": 18,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    // "workbench.iconTheme": "material-icon-theme",
+    // "workbench.iconTheme": "vs-seti",
+    // "workbench.colorTheme": "Visual Studio Dark",
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "switch:command",
+        "push:command",
+        "branch-create:command"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.guides.bracketPairs": "active",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "tailwindCSS.experimental.configFile": null,
+    // APPLICATION SCOPE SETTINGS
+    "window.menuBarVisibility": "compact",
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.newWindowDimensions": "offset"
+}
