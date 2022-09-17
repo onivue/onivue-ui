@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import { navigation } from '@/data/navigation'
-import { useRouter } from 'next/router'
 import classNames from 'classnames'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const SideBarNavigation = () => {
     const router = useRouter()

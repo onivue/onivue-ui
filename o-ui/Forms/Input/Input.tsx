@@ -1,8 +1,8 @@
+import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
+import Label from '@/o-ui/Forms/Label/Label'
 import classNames from 'classnames'
 import * as React from 'react'
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
-import Label from '@/o-ui/Forms/Label/Label'
-import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 
 export type InputProps<T = HTMLInputElement> = {
     disabled?: React.InputHTMLAttributes<T>['disabled']

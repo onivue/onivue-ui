@@ -1,127 +1,153 @@
-import Link from "next/link"
+import Link from 'next/link'
 import Button from '@/o-ui/Button/Button'
 import { HiMenuAlt2 } from 'react-icons/hi'
-import PageGenerator from "@/components/PageGenerator/PageGenerator"
+import PageGenerator from '@/components/PageGenerator/PageGenerator'
 
 export const meta = {
-  title: 'Button',
-  description: '...',
-  date: '-',
+    title: 'Button',
+    description: '...',
+    date: '-',
 }
 
 export const propTypes = [
-  {
-    property: "size",
-    type: ["xs", "sm", "md", "lg", "xl"],
-    default: "md",
-    description: "Size of the button",
-  },
-  {
-    property: "variant",
-    type: ["link", "solid", "outline", "light", "ghost"],
-    default: "outline",
-    description: "Controls button appearance",
-  },
-  {
-    property: "loading",
-    type: ["boolean"],
-    default: false,
-    description: "Shows loading spinner",
-  },
-  {
-    property: "type",
-    type: ["button", "reset", "submit"],
-    default: "",
-    description: "Set the original html type of button",
-  },
-  {
-    property: "leftIcon",
-    type: ["React.ReactElement"],
-    default: "",
-    description: "Adds icon before button label",
-  },
-  {
-    property: "rightIcon",
-    type: ["React.ReactElement"],
-    default: "",
-    description: "Adds icon after button label",
-  },
-  {
-    property: "disabled",
-    type: ["boolean"],
-    default: false,
-    description: "Makes button disabled",
-  },
-];
+    {
+        property: 'size',
+        type: ['xs', 'sm', 'md', 'lg', 'xl'],
+        default: 'md',
+        description: 'Size of the button',
+    },
+    {
+        property: 'variant',
+        type: ['link', 'solid', 'outline', 'light', 'ghost'],
+        default: 'outline',
+        description: 'Controls button appearance',
+    },
+    {
+        property: 'loading',
+        type: ['boolean'],
+        default: false,
+        description: 'Shows loading spinner',
+    },
+    {
+        property: 'type',
+        type: ['button', 'reset', 'submit'],
+        default: '',
+        description: 'Set the original html type of button',
+    },
+    {
+        property: 'leftIcon',
+        type: ['React.ReactElement'],
+        default: '',
+        description: 'Adds icon before button label',
+    },
+    {
+        property: 'rightIcon',
+        type: ['React.ReactElement'],
+        default: '',
+        description: 'Adds icon after button label',
+    },
+    {
+        property: 'disabled',
+        type: ['boolean'],
+        default: false,
+        description: 'Makes button disabled',
+    },
+]
 
-
-export default ({ children }) => <PageGenerator meta={meta} propTypes={propTypes}>{children}</PageGenerator>;
-
+export default ({ children }) => (
+    <PageGenerator meta={meta} propTypes={propTypes}>
+        {children}
+    </PageGenerator>
+)
 
 {/* -------------------------------------------------------------------------------------- */}
 
 ### Variants
-<div className="flex gap-2">
-<Button variant="solid">Button</Button>
-<Button variant="light">Button</Button>
-<Button variant="outline">Button</Button>
-<Button variant="ghost">Button</Button>
-</div>
-```jsx
-<Button variant="solid">Button</Button>
-<Button variant="light">Button</Button>
-<Button variant="outline">Button</Button>
-<Button variant="ghost">Button</Button>
-```
----
-### Sizes
-<div className="flex gap-2">
-<Button size="sm">Button</Button>
-<Button size="md">Button</Button>
-<Button size="lg">Button</Button>
-</div>
-```jsx
-<Button size="sm">Button</Button>
-<Button size="md">Button</Button>
-<Button size="lg">Button</Button>
-```
----
-### With icons
-<div className="flex gap-2">
-<Button leftIcon={<HiMenuAlt2 className="w-4 h-4 mr-1"/>}>Button</Button>
-<Button rightIcon={<HiMenuAlt2 className="w-4 h-4 ml-1"/>}>Button</Button>
-</div>
-```jsx
-import { HiMenuAlt2 } from 'react-icons/hi'
-<Button leftIcon={<HiMenuAlt2 className="w-4 h-4 mr-1"/>}>Button</Button>
-<Button rightIcon={<HiMenuAlt2 className="w-4 h-4 ml-1"/>}>Button</Button>
-```
----
-### Loading state
-<div className="flex gap-2">
-<Button variant="solid" loading>Button</Button>
-<Button variant="light" loading>Button</Button>
-<Button variant="outline" loading>Button</Button>
-<Button variant="ghost" loading>Button</Button>
-</div>
-```jsx
-<Button variant="solid" loading>Button</Button>
-<Button variant="light" loading>Button</Button>
-<Button variant="outline" loading>Button</Button>
-<Button variant="ghost" loading>Button</Button>
-```
----
-### Disabled
 
 <div className="flex gap-2">
-<Button variant="solid" disabled>Button</Button>
-<Button variant="light" disabled>Button</Button>
-<Button variant="outline" disabled>Button</Button>
-<Button variant="ghost" disabled>Button</Button>
+    <Button variant="solid">Button</Button>
+    <Button variant="light">Button</Button>
+    <Button variant="outline">Button</Button>
+    <Button variant="ghost">Button</Button>
 </div>
 ```jsx
-<Button variant="solid" disabled>Button</Button>
-<Button variant="light" disabled>Button</Button>
-<Button variant="outline" disabled>Button</Button>
-<Button variant="ghost" disabled>Button</Button>
+<Button variant="solid">Button</Button>
+<Button variant="light">Button</Button>
+<Button variant="outline">Button</Button>
+<Button variant="ghost">Button</Button>
+``` --- ### Sizes
+<div className="flex gap-2">
+    <Button size="sm">Button</Button>
+    <Button size="md">Button</Button>
+    <Button size="lg">Button</Button>
+</div>
+```jsx
+<Button size="sm">Button</Button>
+<Button size="md">Button</Button>
+<Button size="lg">Button</Button>
+``` --- ### With icons
+<div className="flex gap-2">
+    <Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
+    <Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
+</div>
+```jsx import {HiMenuAlt2} from 'react-icons/hi'
+<Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
+<Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
+``` --- ### Loading state
+<div className="flex gap-2">
+    <Button variant="solid" loading>
+        Button
+    </Button>
+    <Button variant="light" loading>
+        Button
+    </Button>
+    <Button variant="outline" loading>
+        Button
+    </Button>
+    <Button variant="ghost" loading>
+        Button
+    </Button>
+</div>
+```jsx
+<Button variant="solid" loading>
+    Button
+</Button>
+<Button variant="light" loading>
+    Button
+</Button>
+<Button variant="outline" loading>
+    Button
+</Button>
+<Button variant="ghost" loading>
+    Button
+</Button>
+``` --- ### Disabled
+
+<div className="flex gap-2">
+    <Button variant="solid" disabled>
+        Button
+    </Button>
+    <Button variant="light" disabled>
+        Button
+    </Button>
+    <Button variant="outline" disabled>
+        Button
+    </Button>
+    <Button variant="ghost" disabled>
+        Button
+    </Button>
+</div>
+```jsx
+<Button variant="solid" disabled>
+    Button
+</Button>
+<Button variant="light" disabled>
+    Button
+</Button>
+<Button variant="outline" disabled>
+    Button
+</Button>
+<Button variant="ghost" disabled>
+    Button
+</Button>
 ```

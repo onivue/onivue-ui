@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 const RightSection = () => {
     return (
         <div className="sticky top-20 hidden h-[calc(100vh-5rem)] w-52 gap-4 overflow-auto pt-4 pr-4 pl-2 xl:block">

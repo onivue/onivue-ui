@@ -1,8 +1,7 @@
-import React from 'react'
 import {
-    HiOutlineInformationCircle,
     HiOutlineCheckCircle,
     HiOutlineExclamationCircle,
+    HiOutlineInformationCircle,
     HiOutlineXCircle,
 } from 'react-icons/hi'
 

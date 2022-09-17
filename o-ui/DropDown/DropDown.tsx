@@ -1,7 +1,6 @@
-import React from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
 import classNames from 'classnames'
+import React, { Fragment } from 'react'
 
 type DropDownProps = {
     button: React.ReactElement

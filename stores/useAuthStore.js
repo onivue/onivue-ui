@@ -1,32 +1,15 @@
-import create from 'zustand'
-import { auth } from '@/lib/firebase'
+import { auth, db } from '@/lib/firebase'
 import {
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    onAuthStateChanged,
     deleteUser,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
     signOut,
     updatePassword,
-    updateProfile,
 } from 'firebase/auth'
-import { db } from '@/lib/firebase'
-import {
-    collection,
-    query,
-    onSnapshot,
-    doc,
-    addDoc,
-    deleteDoc,
-    setDoc,
-    getDocs,
-    getDoc,
-    arrayUnion,
-    arrayRemove,
-    serverTimestamp,
-    where,
-    orderBy,
-} from 'firebase/firestore'
+import { collection, doc, setDoc } from 'firebase/firestore'
+import create from 'zustand'
 
 const useAuthStore = create((set, get) => ({
     user: null,

@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
+import SideBarNavigation from '@/components/Layout/SideBar/SideBarNavigation'
+import LogoIcon from '@/components/LogoIcon/LogoIcon'
 import Link from 'next/link'
 import Router from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 import { HiMenuAlt2 } from 'react-icons/hi'
-import LogoIcon from '@/components/LogoIcon/LogoIcon'
-import SideBarNavigation from '@/components/Layout/SideBar/SideBarNavigation'
 
 export default function SideBar({ hidden = false, width = '20rem' }) {
     const [sideBarIsOpen, toggleSideBar] = useState(false)

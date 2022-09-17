@@ -1,96 +1,101 @@
-import Link from "next/link"
+import Link from 'next/link'
 import { useState } from 'react'
 import { HiMenuAlt2 } from 'react-icons/hi'
-import PageGenerator from "@/components/PageGenerator/PageGenerator"
+import PageGenerator from '@/components/PageGenerator/PageGenerator'
 import Modal from '@/o-ui/Modal/Modal'
 import Button from '@/o-ui/Button/Button'
 
 export const meta = {
-  title: 'Modal',
-  description: '...',
-  date: '-',
+    title: 'Modal',
+    description: '...',
+    date: '-',
 }
 
 export const propTypes = [
-  {
-    property: "title",
-    type: ["string"],
-    default: "",
-    description: "Modal header title",
-  },
-  {
-    property: "variant",
-    type: ["edit","warning","info"],
-    default: "",
-    description: "Modal header title",
-  },
-  {
-    property: "show",
-    type: ["boolean"],
-    default: "false",
-    description: "Whether or not the Modal is open",
-  },
-  {
-    property: "onClose",
-    type: ["() => void"],
-    default: "",
-    description: "Function when closing button is clicked",
-  },
-  {
-    property: "onCancle",
-    type: ["() => void"],
-    default: "",
-    description: "Function when cancel button is clicked",
-  },
-  {
-    property: "onSubmit",
-    type: ["() => void"],
-    default: "",
-    description: "Function when submit button is clicked",
-  },
-];
+    {
+        property: 'title',
+        type: ['string'],
+        default: '',
+        description: 'Modal header title',
+    },
+    {
+        property: 'variant',
+        type: ['edit', 'warning', 'info'],
+        default: '',
+        description: 'Modal header title',
+    },
+    {
+        property: 'show',
+        type: ['boolean'],
+        default: 'false',
+        description: 'Whether or not the Modal is open',
+    },
+    {
+        property: 'onClose',
+        type: ['() => void'],
+        default: '',
+        description: 'Function when closing button is clicked',
+    },
+    {
+        property: 'onCancle',
+        type: ['() => void'],
+        default: '',
+        description: 'Function when cancel button is clicked',
+    },
+    {
+        property: 'onSubmit',
+        type: ['() => void'],
+        default: '',
+        description: 'Function when submit button is clicked',
+    },
+]
 
-
-export default ({ children }) => <PageGenerator meta={meta} propTypes={propTypes}>{children}</PageGenerator>;
-
+export default ({ children }) => (
+    <PageGenerator meta={meta} propTypes={propTypes}>
+        {children}
+    </PageGenerator>
+)
 
 {/* -------------------------------------------------------------------------------------- */}
 
-
 export const ModalExample = () => {
-  const [showModal, setShowModal] = useState(false)
-  return (
-    <>
-      <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
-      <Modal 
-        title="Edit Bookmark"
-        variant="edit"
-        show={showModal}
-        onClose={() => {setShowModal(false)}}
-        onCancel={() => {setShowModal(false)}}
-        onSubmit={() => {}}
-      />
-    </>
-  )
+    const [showModal, setShowModal] = useState(false)
+    return (
+        <>
+            <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
+            <Modal
+                title="Edit Bookmark"
+                variant="edit"
+                show={showModal}
+                onClose={() => {
+                    setShowModal(false)
+                }}
+                onCancel={() => {
+                    setShowModal(false)
+                }}
+                onSubmit={() => {}}
+            />
+        </>
+    )
 }
 
 ### Basic usage
+
 <div className="flex gap-2">
-<ModalExample/>
+    <ModalExample />
 </div>
-```jsx
-const [showModal, setShowModal] = useState(false)
-  return (
-    <>
-      <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
-      <Modal 
+```jsx const [showModal, setShowModal] = useState(false) return (<>
+    <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
+    <Modal
         title="Edit Bookmark"
         variant="edit"
         show={showModal}
-        onClose={() => {setShowModal(false)}}
-        onCancel={() => {setShowModal(false)}}
+        onClose={() => {
+            setShowModal(false)
+        }}
+        onCancel={() => {
+            setShowModal(false)
+        }}
         onSubmit={() => {}}
-      />
-    </>
-  )
-```
+    />
+</>) ```

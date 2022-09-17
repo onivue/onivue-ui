@@ -1,7 +1,7 @@
-import React from 'react'
+import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
 import Label from '@/o-ui/Forms/Label/Label'
 import classNames from 'classnames'
-import FormFieldErrorMessage from '@/o-ui/Forms/FormFieldErrorMessage/FormFieldErrorMessage'
+import React from 'react'
 
 export type SwitchProps<T = HTMLInputElement> = {
     disabled?: React.InputHTMLAttributes<T>['disabled']

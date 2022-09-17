@@ -1,4 +1,3 @@
-import React from 'react'
 import Icon from '@/o-ui/Icon/Icon'
 const iconComponent = () => {
     return (
