@@ -1,11 +1,10 @@
-import '@/styles/globals.css'
-import '@/styles/code.css'
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import SideBar from '@/components/Layout/SideBar/SideBar'
-import Header from '@/components/Layout/Header/Header'
-import RightSection from '@/components/Layout/RightSection/RightSection'
 import Footer from '@/components/Layout/Footer/Footer'
+import Header from '@/components/Layout/Header/Header'
+import SideBar from '@/components/Layout/SideBar/SideBar'
+import '@/styles/code.css'
+import '@/styles/globals.css'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

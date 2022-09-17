@@ -1,0 +1,18 @@
+module.exports = {
+    tabWidth: 4,
+    printWidth: 110,
+    trailingComma: 'all',
+    endOfLine: 'auto',
+    singleQuote: true,
+    jsxSingleQuote: false,
+    jsxBracketSameLine: false,
+    arrowParens: 'always',
+    semi: false,
+    useTabs: false,
+    quoteProps: 'as-needed',
+    bracketSpacing: true,
+    plugins: [require('prettier-plugin-organize-imports')],
+    importOrder: ['^[./]'],
+    importOrderSeparation: true,
+    importOrderSortSpecifiers: true,
+};
