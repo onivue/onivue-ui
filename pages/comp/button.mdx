@@ -75,7 +75,12 @@ export default ({ children }) => (
 <Button variant="light">Button</Button>
 <Button variant="outline">Button</Button>
 <Button variant="ghost">Button</Button>
-``` --- ### Sizes
+```
+
+---
+
+### Sizes
+
 <div className="flex gap-2">
     <Button size="sm">Button</Button>
     <Button size="md">Button</Button>
@@ -85,7 +90,12 @@ export default ({ children }) => (
 <Button size="sm">Button</Button>
 <Button size="md">Button</Button>
 <Button size="lg">Button</Button>
-``` --- ### With icons
+```
+
+---
+
+### With icons
+
 <div className="flex gap-2">
     <Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
     <Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
@@ -93,7 +103,12 @@ export default ({ children }) => (
 ```jsx import {HiMenuAlt2} from 'react-icons/hi'
 <Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
 <Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
-``` --- ### Loading state
+```
+
+---
+
+### Loading state
+
 <div className="flex gap-2">
     <Button variant="solid" loading>
         Button
@@ -121,7 +136,9 @@ export default ({ children }) => (
 <Button variant="ghost" loading>
     Button
 </Button>
-``` --- ### Disabled
+```
+
+--- ### Disabled
 
 <div className="flex gap-2">
     <Button variant="solid" disabled>
@@ -137,6 +154,7 @@ export default ({ children }) => (
         Button
     </Button>
 </div>
+
 ```jsx
 <Button variant="solid" disabled>
     Button
