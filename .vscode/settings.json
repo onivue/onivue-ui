@@ -17,7 +17,7 @@
     "editor.fontLigatures": true,
     "explorer.compactFolders": false,
     "workbench.tree.indent": 18,
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "eq-material-theme-icons",
     "workbench.colorTheme": "One Dark Pro Darker",
     // "workbench.iconTheme": "material-icon-theme",
     // "workbench.iconTheme": "vs-seti",
