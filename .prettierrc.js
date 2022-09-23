@@ -11,7 +11,6 @@ module.exports = {
     useTabs: false,
     quoteProps: 'as-needed',
     bracketSpacing: true,
-    plugins: [require('prettier-plugin-organize-imports')],
     importOrder: ['^[./]'],
     importOrderSeparation: true,
     importOrderSortSpecifiers: true,
