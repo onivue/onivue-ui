@@ -1,6 +1,13 @@
 {
     "files.exclude": {
-        "node_modules/": true
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/.npm": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/.npm": true
     },
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
