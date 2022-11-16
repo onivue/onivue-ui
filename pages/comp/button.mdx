@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import Button from '@/o-ui/Button/Button'
-import { HiMenuAlt2 } from 'react-icons/hi'
 import PageGenerator from '@/components/PageGenerator/PageGenerator'
+import Button from '@/o-ui/Button/Button'
+import Link from 'next/link'
+import { HiMenuAlt2 } from 'react-icons/hi'
 
 export const meta = {
     title: 'Button',
@@ -12,7 +12,7 @@ export const meta = {
 export const propTypes = [
     {
         property: 'size',
-        type: ['xs', 'sm', 'md', 'lg', 'xl'],
+        type: ['sm', 'md', 'lg'],
         default: 'md',
         description: 'Size of the button',
     },
@@ -60,21 +60,22 @@ export default ({ children }) => (
     </PageGenerator>
 )
 
-{/* -------------------------------------------------------------------------------------- */}
+---
 
 ### Variants
 
 <div className="flex gap-2">
-    <Button variant="solid">Button</Button>
-    <Button variant="light">Button</Button>
-    <Button variant="outline">Button</Button>
-    <Button variant="ghost">Button</Button>
+    <Button variant="primary">Button</Button>
+    <Button variant="secondary">Button</Button>
+    <Button variant="tertiary">Button</Button>
 </div>
+
 ```jsx
-<Button variant="solid">Button</Button>
-<Button variant="light">Button</Button>
-<Button variant="outline">Button</Button>
-<Button variant="ghost">Button</Button>
+<div className="flex gap-2">
+    <Button variant="primary">Button</Button>
+    <Button variant="secondary">Button</Button>
+    <Button variant="tertiary">Button</Button>
+</div>
 ```
 
 ---
@@ -86,10 +87,13 @@ export default ({ children }) => (
     <Button size="md">Button</Button>
     <Button size="lg">Button</Button>
 </div>
+
 ```jsx
-<Button size="sm">Button</Button>
-<Button size="md">Button</Button>
-<Button size="lg">Button</Button>
+<div className="flex gap-2">
+    <Button size="sm">Button</Button>
+    <Button size="md">Button</Button>
+    <Button size="lg">Button</Button>
+</div>
 ```
 
 ---
@@ -97,12 +101,14 @@ export default ({ children }) => (
 ### With icons
 
 <div className="flex gap-2">
-    <Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
-    <Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
+    <Button iconLeft={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
+    <Button iconRight={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
 </div>
-```jsx import {HiMenuAlt2} from 'react-icons/hi'
-<Button leftIcon={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
-<Button rightIcon={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
+```jsx
+<div className="flex gap-2">
+    <Button iconLeft={<HiMenuAlt2 className="mr-1 h-4 w-4" />}>Button</Button>
+    <Button iconRight={<HiMenuAlt2 className="ml-1 h-4 w-4" />}>Button</Button>
+</div>
 ```
 
 ---
@@ -110,62 +116,57 @@ export default ({ children }) => (
 ### Loading state
 
 <div className="flex gap-2">
-    <Button variant="solid" loading>
+    <Button variant="primary" loading>
         Button
     </Button>
-    <Button variant="light" loading>
+    <Button variant="secondary" loading>
         Button
     </Button>
-    <Button variant="outline" loading>
-        Button
-    </Button>
-    <Button variant="ghost" loading>
+    <Button variant="tertiary" loading>
         Button
     </Button>
 </div>
+
 ```jsx
-<Button variant="solid" loading>
-    Button
-</Button>
-<Button variant="light" loading>
-    Button
-</Button>
-<Button variant="outline" loading>
-    Button
-</Button>
-<Button variant="ghost" loading>
-    Button
-</Button>
+<div className="flex gap-2">
+    <Button variant="primary" loading>
+        Button
+    </Button>
+    <Button variant="secondary" loading>
+        Button
+    </Button>
+    <Button variant="tertiary" loading>
+        Button
+    </Button>
+</div>
 ```
 
---- ### Disabled
+---
+
+### Disabled
 
 <div className="flex gap-2">
-    <Button variant="solid" disabled>
+    <Button variant="primary" disabled>
         Button
     </Button>
-    <Button variant="light" disabled>
+    <Button variant="secondary" loading>
         Button
     </Button>
-    <Button variant="outline" disabled>
-        Button
-    </Button>
-    <Button variant="ghost" disabled>
+    <Button variant="tertiary" loading>
         Button
     </Button>
 </div>
 
 ```jsx
-<Button variant="solid" disabled>
-    Button
-</Button>
-<Button variant="light" disabled>
-    Button
-</Button>
-<Button variant="outline" disabled>
-    Button
-</Button>
-<Button variant="ghost" disabled>
-    Button
-</Button>
+<div className="flex gap-2">
+    <Button variant="primary" loading>
+        Button
+    </Button>
+    <Button variant="secondary" loading>
+        Button
+    </Button>
+    <Button variant="tertiary" loading>
+        Button
+    </Button>
+</div>
 ```

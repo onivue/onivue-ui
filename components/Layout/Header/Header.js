@@ -4,12 +4,12 @@ import { HiOutlineCog } from 'react-icons/hi'
 
 function Header() {
     return (
-        <header className="sticky top-0 z-10 flex items-center py-5 px-3 backdrop-blur lg:h-16">
+        <header className="sticky top-0 z-10 flex items-center p-4 backdrop-blur lg:h-16">
             <div className="relative flex w-full items-center justify-between lg:flex-row-reverse">
-                <div className="mx-2 grid h-full place-items-center rounded-lg lg:hidden">
+                <div className="grid h-full place-items-center rounded-lg lg:hidden">
                     <Link href="/">
                         <a>
-                            <LogoIcon className="h-7 w-7" />
+                            <LogoIcon className="h-10 w-10" />
                         </a>
                     </Link>
                 </div>

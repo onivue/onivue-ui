@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <title>onivue-...</title>
             </Head>
             {/* =========== PAGEWRAPPER =========== */}
-            <div className="flex min-h-screen">
+            <div className="flex min-h-screen bg-slate-50">
                 <SideBar width="20rem" />
                 {/* =========== CONTENTWRAPPER =========== */}
                 <div className="flex w-full flex-col justify-around">

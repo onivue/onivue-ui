@@ -1,107 +1,86 @@
 import classNames from 'classnames'
-import React from 'react'
+import { ReactElement, ReactNode, forwardRef } from 'react'
 import { ImSpinner2 } from 'react-icons/im'
 
-type ButtonProps = {
-    /* The label to show in the button when loading is true */
-    loading?: boolean
-    /* Controls button appearance */
-    variant?: 'solid' | 'light' | 'outline' | 'ghost' | 'link'
-    /* Size of the button */
+interface IButtonProps {
     size?: 'sm' | 'md' | 'lg'
-    /* Adds icon before button label */
-    leftIcon?: React.ReactElement
-    /* Adds icon after button label */
-    rightIcon?: React.ReactElement
-} & React.ComponentPropsWithRef<'button'>
+    variant?: 'primary' | 'secondary' | 'tertiary'
+    className?: string
+    loading?: boolean
+    disabled?: boolean
+    iconLeft?: ReactElement
+    iconRight?: ReactElement
+    children?: ReactNode
+}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    (
-        {
-            children,
-            className,
-            disabled: buttonDisabled,
-            loading,
-            variant = 'solid',
-            size = 'md',
-            leftIcon,
-            rightIcon,
-            ...rest
-        },
-        ref,
-    ) => {
-        const disabled = loading || buttonDisabled
+const Button = forwardRef((props: IButtonProps, ref: React.Ref<HTMLButtonElement>) => {
+    const buttonDisabled = props.loading || props.disabled
 
-        return (
-            <button
-                ref={ref}
-                type="button"
-                disabled={disabled}
-                className={classNames(
-                    'flex h-fit items-center justify-center font-semibold',
-                    'rounded-lg ',
-                    'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
-                    'transition-colors duration-75',
-                    'disabled:cursor-not-allowed disabled:opacity-60',
-                    [
-                        size === 'sm' && 'px-3 py-1 text-sm',
-                        size === 'md' && 'px-4 py-2 text-base',
-                        size === 'lg' && 'px-6 py-3 text-lg',
+    return (
+        <button
+            ref={ref}
+            type="button"
+            disabled={buttonDisabled}
+            className={classNames(
+                'flex h-fit items-center justify-center font-semibold',
+                'rounded-lg ',
+                'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
+                'transition-colors duration-75',
+                'disabled:cursor-not-allowed disabled:opacity-60',
+                [
+                    props.size === 'sm' && 'px-3 py-1 text-sm',
+                    props.size === 'md' && 'px-4 py-2 text-base',
+                    props.size === 'lg' && 'px-6 py-3 text-lg',
+                ],
+                //#region  //*=========== Variants ===========
+                [
+                    props.variant === 'primary' && [
+                        'bg-primary-400 text-white border border-transparent',
+                        'hover:bg-primary-500 hover:text-white',
+                        'active:bg-primary-500',
+                        'disabled:bg-primary-400 disabled:text-white ',
                     ],
-
-                    //#region  //*=========== Variants ===========
-                    [
-                        variant === 'solid' && [
-                            'bg-primary-400 text-white',
-                            'hover:bg-primary-500 hover:text-white',
-                            'active:bg-primary-500',
-                            'disabled:bg-primary-400 disabled:text-white',
-                        ],
-                        variant === 'light' && [
-                            'bg-primary-100 text-primary-500 ',
-                            'hover:text-primary-600',
-                            'hover:bg-primary-200 active:bg-primary-100',
-                            'disabled:bg-primary-100 disabled:text-primary-500',
-                        ],
-                        variant === 'outline' && [
-                            'text-primary-500',
-                            'border border-primary-500',
-                            'hover:bg-primary-50 active:bg-primary-100',
-                            'disabled:bg-primary-100 disabled:text-primary-500',
-                        ],
-                        variant === 'ghost' && [
-                            'text-primary-500',
-                            'shadow-none',
-                            'hover:bg-primary-50 active:bg-primary-100',
-                            'disabled:text-primary-500 hover:disabled:bg-transparent',
-                        ],
+                    props.variant === 'secondary' && [
+                        'text-primary-500',
+                        'border border-primary-500',
+                        'hover:bg-primary-50 active:bg-primary-100 ',
+                        'disabled:bg-primary-100 disabled:text-primary-500',
                     ],
-                    //#endregion  //*======== Variants ===========
-
-                    loading &&
-                        'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
-                    className,
-                )}
-                {...rest}
-            >
-                {loading ? (
-                    <>
-                        <ImSpinner2 className="animate-spin" />
-                    </>
-                ) : (
-                    <>
-                        {leftIcon}
-                        {children}
-                        {rightIcon}
-                    </>
-                )}
-            </button>
-        )
-    },
-)
+                    props.variant === 'tertiary' && [
+                        'text-primary-500 border border-transparent',
+                        'hover:bg-primary-100 active:bg-primary-100 hover:border-primary-100 ',
+                        'disabled:text-primary-500',
+                    ],
+                ],
+                //#endregion  //*======== Variants ===========
+                props.loading &&
+                    'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait px-8',
+                props.className,
+            )}
+            // {...props}
+        >
+            {props.loading ? (
+                <>
+                    <ImSpinner2 className="animate-spin" />
+                </>
+            ) : (
+                <>
+                    {props.iconLeft}
+                    {props.children}
+                    {props.iconRight}
+                </>
+            )}
+        </button>
+    )
+})
 
 if (process.env.NODE_ENV !== 'production') {
     Button.displayName = 'Button'
+}
+
+Button.defaultProps = {
+    variant: 'primary',
+    size: 'md',
 }
 
 export default Button
