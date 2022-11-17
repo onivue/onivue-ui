@@ -10,25 +10,25 @@ export default function Home() {
             </div>
             <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-7xl ">
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
-                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-yellow-300 to-pink-500 p-8 text-white  shadow-2xl">
-                        <h3 className="text-3xl font-bold">Self-Paced Lectures</h3>
+                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-yellow-300 to-pink-500 p-8 text-white">
+                        <h3 className="text-3xl font-bold">Alpha</h3>
                         <p className="py-5">
-                            You have a busy life, we undestand that and believe in learning asynchronous.
-                            Easily access the course anytime you want to learn.
+                            Beef chicken pork bacon chuck shortloin sirloin shank ham exercitation dolore,
+                            drumstick frankfurter fugiat consectetur capicola bresaola.
                         </p>
                     </div>
-                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-pink-400 to-blue-400 p-8 text-white shadow-2xl">
-                        <h3 className="text-3xl font-bold">Jam-Packed with Content</h3>
+                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-pink-400 to-blue-400 p-8 text-white">
+                        <h3 className="text-3xl font-bold">Beta</h3>
                         <p className="py-5">
-                            Next.js, GraphQL, Shopify Storefront API, Tailwind CSS, Vercel, React Hooks and so
-                            much more!
+                            Beef chicken pork bacon chuck shortloin sirloin shank ham exercitation dolore,
+                            drumstick frankfurter fugiat consectetur capicola bresaola.
                         </p>
                     </div>
-                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-green-400 to-blue-400 p-8 text-white shadow-2xl">
-                        <h3 className="text-3xl font-bold">Action Based</h3>
+                    <div className="h-full w-full rounded-3xl bg-gradient-to-br from-green-400 to-blue-400 p-8 text-white">
+                        <h3 className="text-3xl font-bold">Gamma</h3>
                         <p className="py-5">
-                            This course is designed to get your started in as little time as possible. There
-                            are no Uhhs or Hmms. All straight to the point.
+                            Beef chicken pork bacon chuck shortloin sirloin shank ham exercitation dolore,
+                            drumstick frankfurter fugiat consectetur capicola bresaola.
                         </p>
                     </div>
                 </div>
