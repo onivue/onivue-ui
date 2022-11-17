@@ -1,9 +1,9 @@
+import PageGenerator from '@/components/PageGenerator/PageGenerator'
+import Button from '@/o-ui/Button/Button'
+import Modal from '@/o-ui/Modal/Modal'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HiMenuAlt2 } from 'react-icons/hi'
-import PageGenerator from '@/components/PageGenerator/PageGenerator'
-import Modal from '@/o-ui/Modal/Modal'
-import Button from '@/o-ui/Button/Button'
 
 export const meta = {
     title: 'Modal',
@@ -62,7 +62,13 @@ export const ModalExample = () => {
     const [showModal, setShowModal] = useState(false)
     return (
         <>
-            <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
+            <Button
+                onClick={() => {
+                    setShowModal(true)
+                }}
+            >
+                OPEN MODAL
+            </Button>
             <Modal
                 title="Edit Bookmark"
                 variant="edit"
@@ -70,10 +76,9 @@ export const ModalExample = () => {
                 onClose={() => {
                     setShowModal(false)
                 }}
-                onCancel={() => {
-                    setShowModal(false)
+                onSubmit={() => {
+                    console.log('🔥')
                 }}
-                onSubmit={() => {}}
             />
         </>
     )
@@ -84,18 +89,19 @@ export const ModalExample = () => {
 <div className="flex gap-2">
     <ModalExample />
 </div>
-```jsx const [showModal, setShowModal] = useState(false) return (<>
-    <Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
-    <Modal
-        title="Edit Bookmark"
-        variant="edit"
-        show={showModal}
-        onClose={() => {
-            setShowModal(false)
-        }}
-        onCancel={() => {
-            setShowModal(false)
-        }}
-        onSubmit={() => {}}
-    />
+```jsx
+<Button onClick={() => setShowModal(true)}>OPEN MODAL</Button>
+<Modal
+    title="Edit Bookmark"
+    variant="edit"
+    show={showModal}
+    onClose={() => {
+        setShowModal(false)
+    }}
+    onSubmit={() => {
+        console.log('🔥')
+    }}
+/>
+/>
+
 </>) ```
