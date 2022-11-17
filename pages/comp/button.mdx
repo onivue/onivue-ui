@@ -18,8 +18,8 @@ export const propTypes = [
     },
     {
         property: 'variant',
-        type: ['link', 'solid', 'outline', 'light', 'ghost'],
-        default: 'outline',
+        type: ['primary', 'secondary', 'tertiary'],
+        default: 'primary',
         description: 'Controls button appearance',
     },
     {
@@ -31,26 +31,44 @@ export const propTypes = [
     {
         property: 'type',
         type: ['button', 'reset', 'submit'],
-        default: '',
+        default: 'button',
         description: 'Set the original html type of button',
     },
     {
-        property: 'leftIcon',
+        property: 'iconLeft',
         type: ['React.ReactElement'],
         default: '',
-        description: 'Adds icon before button label',
+        description: '',
     },
     {
-        property: 'rightIcon',
+        property: 'iconRight',
         type: ['React.ReactElement'],
         default: '',
-        description: 'Adds icon after button label',
+        description: '',
     },
     {
         property: 'disabled',
         type: ['boolean'],
         default: false,
         description: 'Makes button disabled',
+    },
+    {
+        property: 'className',
+        type: ['string'],
+        default: '',
+        description: '',
+    },
+    {
+        property: 'children',
+        type: ['React.ReactNode'],
+        default: '',
+        description: '',
+    },
+    {
+        property: 'onClick',
+        type: ['React.MouseEventHandler'],
+        default: '',
+        description: '',
     },
 ]
 

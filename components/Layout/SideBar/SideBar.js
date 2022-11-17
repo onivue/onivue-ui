@@ -36,13 +36,13 @@ export default function SideBar({ hidden = false, width = '20rem' }) {
 function SideBarNavigationWrapper(props) {
     return (
         <aside
-            className={`pt-4 fixed top-0 left-0 z-20 h-screen w-80 shrink-0 transform transition-all duration-300 lg:sticky lg:-translate-x-0 ${
+            className={`fixed top-0 left-0 z-20 h-screen w-80 shrink-0 transform pt-4 transition-all duration-300 lg:sticky lg:-translate-x-0 ${
                 props.sideBarIsOpen ? 'translate-x-0' : '-translate-x-full'
             }`}
             style={{ width: props.width }}
         >
             <div
-                className=" rounded-tr-xl flex h-full flex-col overflow-auto p-4 bg-white focus:outline-none text-primary-700"
+                className=" flex h-full flex-col overflow-auto rounded-tr-xl bg-white p-4 text-primary-700 focus:outline-none"
                 ref={props.refProp}
             >
                 {props.children}
@@ -55,7 +55,7 @@ function SideBarLogo() {
     return (
         <Link href="/" passHref>
             <div className="mt-5 mb-8 flex justify-center">
-                <LogoIcon className="h-16 w-16 cursor-pointer" />
+                <LogoIcon className="h-16 w-16 cursor-pointer" id={'sidebarlogo'} />
             </div>
         </Link>
     )

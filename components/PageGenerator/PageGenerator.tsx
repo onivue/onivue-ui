@@ -11,18 +11,22 @@ export default function PageGenerator({ children, meta, propTypes }) {
                     <h1 className="mb-3 mt-0   text-3xl font-extrabold">Props</h1>
                     {propTypes.map((propType) => (
                         <div className="flex flex-col py-4" key={propType.property}>
-                            <li className="flex flex-wrap">
-                                <b className="mr-2">{propType.property}</b>
-                                <span className="text-teal-500">[{propType.type.join(', ')}]</span>
-                                <span className="mx-2">·</span>
-                                <span className="text-neutral-500">
+                            <div className="grid">
+                                <div>
+                                    <b className="mr-2">{propType.property}</b>
+                                    <span className="text-teal-500">[{propType.type.join(', ')}]</span>
+                                </div>
+                                {/* <span className="mx-2">·</span> */}
+                                <div className="text-neutral-500">
                                     Default:{' '}
                                     <span className="ml-1 font-medium text-orange-500">
                                         {propType.default || "''"}
                                     </span>
-                                </span>
-                            </li>
-                            <p className="whitespace-normal text-neutral-500">{propType.description}</p>
+                                </div>
+                            </div>
+                            <p className="whitespace-normal text-sm text-neutral-500">
+                                {propType.description}
+                            </p>
                         </div>
                     ))}
                 </div>
