@@ -7,8 +7,9 @@ type DropDownProps = {
     direction?: 'left' | 'right'
 } & React.ComponentPropsWithoutRef<'div'>
 
+// eslint-disable-next-line
 type DropDownItemProps = {} & React.ComponentPropsWithoutRef<'div'>
-
+// eslint-disable-next-line
 type DropDownDividerProps = {} & React.ComponentPropsWithoutRef<'div'>
 
 const DropDown = ({ button, children, direction }: DropDownProps) => {
@@ -43,7 +44,7 @@ const DropDownItem = ({ children }: DropDownItemProps) => {
     return <div className="cursor-pointer rounded-lg py-1.5 px-2 hover:bg-primary-50">{children}</div>
 }
 DropDown.Item = DropDownItem
-
+// eslint-disable-next-line
 const DropDownDivider = ({}: DropDownDividerProps) => {
     return <hr className="my-1.5" />
 }

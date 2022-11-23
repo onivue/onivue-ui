@@ -26,7 +26,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
     (
         {
             size = 'md',
-            variant = 'outline',
+            // variant = 'outline',
             color = 'primary',
             'aria-label': ariaLabel,
             'aria-describedby': ariaDescribedby,
@@ -70,6 +70,7 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
                             size === 'md' && 'py-2.5 text-base',
                             size === 'lg' && 'py-3 text-lg',
                             disabled && 'cursor-not-allowed opacity-50',
+                            className,
                         )}
                         type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
                         id={name}

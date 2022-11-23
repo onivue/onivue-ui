@@ -1,8 +1,7 @@
 import Input from '@/o-ui/Forms/Input/Input'
 import Radio from '@/o-ui/Forms/Radio/Radio'
 import Switch from '@/o-ui/Forms/Switch/Switch'
-import Textarea from '@/o-ui/Forms/Textarea/Textarea'
-import Link from 'next/link'
+import TextArea from '@/o-ui/Forms/Textarea/Textarea'
 import Button from 'o-ui/Button/Button'
 import { useForm } from 'react-hook-form'
 
@@ -66,7 +65,7 @@ export default function App() {
                     })}
                     errorMessage={errors.password?.message}
                 />
-                <Textarea
+                <TextArea
                     cols={5}
                     rows={5}
                     label="Text"

@@ -25,7 +25,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
     (
         {
             size = 'md',
-            variant = 'outline',
+            // variant = 'outline',
             color = 'primary',
             'aria-label': ariaLabel,
             'aria-describedby': ariaDescribedby,
@@ -42,8 +42,6 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
         },
         ref?: React.Ref<HTMLTextAreaElement>,
     ) => {
-        const [showPassword, setShowPassword] = React.useState(false)
-
         return (
             <div className="flex flex-col">
                 <Label htmlFor={name} dot={dot} label={label} className="mb-1.5" bold disabled={disabled} />
@@ -68,6 +66,7 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
                             size === 'md' && 'py-2.5 text-base',
                             size === 'lg' && 'py-3 text-lg',
                             disabled && 'cursor-not-allowed opacity-50',
+                            className,
                         )}
                         id={name}
                         name={name}

@@ -25,6 +25,6 @@
             "@/o-ui/*": ["o-ui/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".onivue.eslintrc.js"],
     "exclude": ["node_modules"]
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const colors = require('tailwindcss/colors')
 const animations = require('./tailwind/animations')
 const defaultTheme = require('tailwindcss/defaultTheme')

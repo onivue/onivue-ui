@@ -22,7 +22,7 @@ export type RadioProps<T = HTMLInputElement> = {
 
 const Radio = React.forwardRef<HTMLElement, RadioProps>(
     (
-        { name, invalid, disabled, required, label, dot, errorMessage, ...rest },
+        { name, /*invalid,*/ disabled, required, label, dot, errorMessage, ...rest },
         ref?: React.Ref<HTMLInputElement>,
     ) => {
         return (

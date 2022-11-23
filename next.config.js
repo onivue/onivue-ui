@@ -5,9 +5,9 @@
 //         domains: ['fakestoreapi.com'],
 //     },
 // }
-
 // module.exports = nextConfig
 
+// eslint-disable-next-line
 const withMDX = require('@next/mdx')({
     extension: /\.mdx?$/,
     options: {
