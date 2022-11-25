@@ -1,31 +1,34 @@
 import SideBarNavigation from '@/components/Layout/SideBar/SideBarNavigation'
 import LogoIcon from '@/components/LogoIcon/LogoIcon'
 import Link from 'next/link'
-import Router from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { Router } from 'next/router'
+import { useEffect, useRef } from 'react'
 import { HiMenuAlt2 } from 'react-icons/hi'
 
+import useOpenWithBrowserHistory from './helper'
+
 export default function SideBar({ hidden = false, width = '20rem' }) {
-    const [sideBarIsOpen, toggleSideBar] = useState(false)
+    const [open, setOpen, handleOpen, handleClose] = useOpenWithBrowserHistory('uniq-key')
+
     const ref = useRef(null)
     // CLOSE SIDEBAR WHEN ROUTE CHANGES
-    Router.events.on('routeChangeStart', () => toggleSideBar(false))
+    Router.events.on('routeChangeStart', () => handleClose())
     //MOBILE SIDEBAR TOGGLE HANDLER
     useEffect(() => {
         const handleOutsideClick = (event) => {
-            !ref.current?.contains(event.target) && sideBarIsOpen && toggleSideBar(false)
+            !ref.current?.contains(event.target) && open && handleClose()
         }
         window.addEventListener('mousedown', handleOutsideClick)
         return () => window.removeEventListener('mousedown', handleOutsideClick)
-    }, [sideBarIsOpen, ref])
+    }, [open, ref])
 
     if (hidden) return <></>
 
     return (
         <>
-            {sideBarIsOpen ? <SideBarOverlay /> : <SideBarToggleButton toggleSidenav={toggleSideBar} />}
+            {open ? <SideBarOverlay /> : <SideBarToggleButton toggleSidenav={setOpen} />}
 
-            <SideBarNavigationWrapper sideBarIsOpen={sideBarIsOpen} refProp={ref} width={width}>
+            <SideBarNavigationWrapper sideBarIsOpen={open} refProp={ref} width={width}>
                 <SideBarLogo />
                 <SideBarNavigation />
             </SideBarNavigationWrapper>
