@@ -3,44 +3,33 @@ import Label from '@/o-ui/Forms/Label/Label'
 import classNames from 'classnames'
 import * as React from 'react'
 
-export type TextareaProps<T = HTMLTextAreaElement> = {
-    disabled?: React.TextareaHTMLAttributes<T>['disabled']
+export type TTextareaProps = {
     invalid?: boolean
-    required?: React.TextareaHTMLAttributes<T>['required']
-    readOnly?: React.TextareaHTMLAttributes<T>['readOnly']
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    variant?: 'outline' | 'solid'
-    'aria-label'?: string
-    'aria-describedby'?: string
     label?: string
     dot?: boolean
     errorMessage?: string
-} & Omit<
-    React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-    'size' | 'disabled' | 'required' | 'checked' | 'defaultChecked' | 'readOnly'
-> &
-    React.RefAttributes<T>
+    size?: 'md' | 'lg'
+    variant?: 'outline' | 'solid'
+} & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> &
+    React.RefAttributes<HTMLTextAreaElement>
 
-export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
+export const Textarea: React.FC<TTextareaProps> = React.forwardRef(
     (
         {
-            size = 'md',
-            // variant = 'outline',
-            color = 'primary',
-            'aria-label': ariaLabel,
-            'aria-describedby': ariaDescribedby,
-            className,
+            id,
+            dot,
             name,
+            label,
             invalid,
             errorMessage,
+            className,
             disabled,
             readOnly,
             required,
-            label,
-            dot,
+            size = 'md',
             ...rest
         },
-        ref?: React.Ref<HTMLTextAreaElement>,
+        ref,
     ) => {
         return (
             <div className="flex flex-col">
@@ -48,16 +37,12 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
                 <div className="relative flex">
                     <textarea
                         ref={ref}
-                        readOnly={readOnly}
+                        id={id || name}
                         aria-readonly={readOnly}
-                        disabled={disabled}
                         aria-disabled={disabled}
-                        aria-label={ariaLabel}
+                        aria-label={label}
                         aria-invalid={invalid}
-                        required={required}
                         aria-required={required}
-                        aria-describedby={ariaDescribedby}
-                        data-color={color ? color : undefined}
                         className={classNames(
                             'w-full rounded-lg transition duration-150 ease-in',
                             invalid
@@ -68,8 +53,6 @@ export const Textarea = React.forwardRef<HTMLElement, TextareaProps>(
                             disabled && 'cursor-not-allowed opacity-50',
                             className,
                         )}
-                        id={name}
-                        name={name}
                         {...rest}
                     />
                 </div>

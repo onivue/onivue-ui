@@ -3,37 +3,25 @@ import Label from '@/o-ui/Forms/Label/Label'
 import classNames from 'classnames'
 import React from 'react'
 
-export type RadioProps<T = HTMLInputElement> = {
-    disabled?: React.InputHTMLAttributes<T>['disabled']
-    invalid?: boolean
-    required?: React.InputHTMLAttributes<T>['required']
-    readOnly?: React.InputHTMLAttributes<T>['readOnly']
-    'aria-label'?: string
-    'aria-describedby'?: string
+export type TRadioProps = {
     label?: string
     dot?: boolean
     errorMessage?: string
     type?: 'radio'
-} & Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    'disabled' | 'required' | 'checked' | 'defaultChecked' | 'readOnly' | 'type'
-> &
-    React.RefAttributes<T>
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
+    React.RefAttributes<HTMLInputElement>
 
-const Radio = React.forwardRef<HTMLElement, RadioProps>(
-    (
-        { name, /*invalid,*/ disabled, required, label, dot, errorMessage, ...rest },
-        ref?: React.Ref<HTMLInputElement>,
-    ) => {
+const Radio: React.FC<TRadioProps> = React.forwardRef(
+    ({ id, name, disabled, required, label, dot, errorMessage, ...rest }, ref) => {
         return (
             <div className="flex items-center">
                 <input
                     ref={ref}
+                    id={id || name}
                     disabled={disabled}
-                    aria-disabled={disabled}
                     required={required}
-                    name={name}
                     type="radio"
+                    aria-disabled={disabled}
                     className={classNames(
                         'h-6 w-6 border-gray-300 bg-gray-100 text-primary-400 transition-all focus:ring-2 focus:ring-primary-400',
                         disabled && 'cursor-not-allowed opacity-30',

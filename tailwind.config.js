@@ -18,7 +18,16 @@ module.exports = {
             },
             colors: {
                 primary: {
-                    ...colors.teal,
+                    50: '#effefc',
+                    100: '#c8fff7',
+                    200: '#91fef1',
+                    300: '#52f6ea',
+                    400: '#1ee3d9',
+                    500: '#05c7c0',
+                    600: '#01a09e',
+                    700: '#068383',
+                    800: '#0a6465',
+                    900: '#0e5253',
                 },
             },
             typography(theme) {
@@ -34,7 +43,6 @@ module.exports = {
                     },
                 }
             },
-
             ...animations,
         },
     },

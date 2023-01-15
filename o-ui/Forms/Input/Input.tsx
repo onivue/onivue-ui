@@ -4,45 +4,35 @@ import classNames from 'classnames'
 import * as React from 'react'
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi'
 
-export type InputProps<T = HTMLInputElement> = {
-    disabled?: React.InputHTMLAttributes<T>['disabled']
-    invalid?: boolean
-    required?: React.InputHTMLAttributes<T>['required']
-    readOnly?: React.InputHTMLAttributes<T>['readOnly']
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-    variant?: 'outline' | 'solid'
-    'aria-label'?: string
-    'aria-describedby'?: string
-    label?: string
+export type TInputProps = {
     dot?: boolean
+    label?: string
+    invalid?: boolean
+    disabled?: boolean
+    required?: boolean
     errorMessage?: string
-} & Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    'size' | 'disabled' | 'required' | 'checked' | 'defaultChecked' | 'readOnly'
-> &
-    React.RefAttributes<T>
+    size?: 'md' | 'lg'
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'disabled' | 'required' | 'checked'> &
+    React.RefAttributes<HTMLInputElement>
 
-export const Input = React.forwardRef<HTMLElement, InputProps>(
+export const Input: React.FC<TInputProps> = React.forwardRef(
     (
         {
+            dot,
+            label,
+            invalid,
+            disabled,
+            required,
+            errorMessage,
             size = 'md',
-            // variant = 'outline',
-            color = 'primary',
-            'aria-label': ariaLabel,
-            'aria-describedby': ariaDescribedby,
+            id,
+            name,
+            readOnly,
             className,
             type = 'text',
-            name,
-            invalid,
-            errorMessage,
-            disabled,
-            readOnly,
-            required,
-            label,
-            dot,
             ...rest
         },
-        ref?: React.Ref<HTMLInputElement>,
+        ref,
     ) => {
         const [showPassword, setShowPassword] = React.useState(false)
 
@@ -52,29 +42,26 @@ export const Input = React.forwardRef<HTMLElement, InputProps>(
                 <div className="relative">
                     <input
                         ref={ref}
+                        id={id || name}
                         readOnly={readOnly}
-                        aria-readonly={readOnly}
                         disabled={disabled}
-                        aria-disabled={disabled}
-                        aria-label={ariaLabel}
-                        aria-invalid={invalid}
                         required={required}
+                        aria-label={label}
+                        aria-invalid={invalid}
+                        aria-disabled={disabled}
                         aria-required={required}
-                        aria-describedby={ariaDescribedby}
-                        data-color={color ? color : undefined}
+                        aria-readonly={readOnly}
+                        type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
                         className={classNames(
                             'w-full rounded-lg transition duration-150 ease-in',
-                            invalid
-                                ? 'border-none ring-2 ring-red-400 focus:ring-2 focus:ring-red-400'
-                                : 'border-none ring-2 ring-black focus:ring-2 focus:ring-primary-400',
                             size === 'md' && 'py-2.5 text-base',
                             size === 'lg' && 'py-3 text-lg',
                             disabled && 'cursor-not-allowed opacity-50',
+                            invalid
+                                ? 'border-none ring-2 ring-red-400 focus:ring-2 focus:ring-red-400'
+                                : 'border-none ring-2 ring-black focus:ring-2 focus:ring-primary-400',
                             className,
                         )}
-                        type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
-                        id={name}
-                        name={name}
                         {...rest}
                     />
                     {type === 'password' && !disabled && (

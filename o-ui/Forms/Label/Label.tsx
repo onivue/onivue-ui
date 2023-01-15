@@ -1,15 +1,15 @@
 import classNames from 'classnames'
 
-type LabelType = {
+type TLabelProps = {
     label: string
-    htmlFor?: string
     dot?: boolean
+    htmlFor?: string
     className?: string
     bold?: boolean
     disabled?: boolean
 }
 
-const Label = ({ label, dot, htmlFor, className, bold, disabled }: LabelType) => {
+const Label = ({ label, dot, htmlFor, className, bold, disabled }: TLabelProps) => {
     return (
         <label
             htmlFor={htmlFor}
